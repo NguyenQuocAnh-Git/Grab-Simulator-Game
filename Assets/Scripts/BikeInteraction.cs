@@ -12,7 +12,10 @@ public class BikeInteraction : MonoBehaviour
     public Camera bikeCamera;              // Camera xe
     public MonoBehaviour playerController; // Script điều khiển nhân vật
     public MonoBehaviour bikeController;   // Script điều khiển xe
-    public Transform player;               // Nhân vật
+    public Transform player;
+    [Header("Audio")]
+    public AudioSource engineSound;
+    public AudioSource skidSound;
 
     private bool isNear = false;
     private bool isDriving = false;
@@ -50,7 +53,8 @@ public class BikeInteraction : MonoBehaviour
         // Enable xe
         bikeController.enabled = true;
         bikeCamera.gameObject.SetActive(true);
-
+        engineSound.Play();
+        skidSound.Play();
         OnEnterBike?.Invoke();
     }
 
@@ -66,7 +70,8 @@ public class BikeInteraction : MonoBehaviour
         // Disable xe
         bikeController.enabled = false;
         bikeCamera.gameObject.SetActive(false);
-
+        engineSound.Stop();
+        skidSound.Stop();
         OnExitBike?.Invoke();
     }
 

@@ -8,12 +8,19 @@ public class BikeController : MonoBehaviour
 
     [HideInInspector] public Vector3 velocity;
     public GameObject Handle;
-    public float maxSpeed, acceleration, steerStrength, gravity, bikeXTileIncrement, zTiltAngle, handleRotVal, handleRotSpeed;
-
-    [Range(1, 10)]
-    public float brakingFactory;
-
     public Rigidbody SphereRB, BikeBody;
+    public TrailRenderer skinMarks;
+
+    [Header("Audio")]
+    public AudioSource engineSound;
+    public AudioSource skidSound;
+
+    public float maxSpeed, acceleration, steerStrength, gravity, bikeXTileIncrement, zTiltAngle, handleRotVal, handleRotSpeed, skinWight, minSkinVelocity;
+
+    [Header("Slider")]
+    [Range(1, 10)] public float brakingFactory;
+    [Range(0, 1)] public float minPitch;
+    [Range(1, 5)] public float maxPitch;
 
 
     public LayerMask ground;
@@ -23,6 +30,10 @@ public class BikeController : MonoBehaviour
         BikeBody.transform.parent = null;
 
         rayLenght = SphereRB.GetComponent<SphereCollider>().radius + 0.2f;
+
+
+        skinMarks.startWidth = skinWight;
+        skinMarks.emitting = false;
 
     }
 
@@ -41,6 +52,10 @@ public class BikeController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+
+        SkinMarks();
+
+        EngineSound();
     }
 
     private void Movement()
@@ -116,5 +131,32 @@ public class BikeController : MonoBehaviour
     private void Gravity()
     {
         SphereRB.AddForce(gravity * Vector3.down, ForceMode.Acceleration);
+    }
+
+    private void SkinMarks()
+    {
+        if (Grounded() && Mathf.Abs(velocity.x) > minSkinVelocity)
+        {
+            skinMarks.emitting = true;
+            skidSound.mute = false;
+        }
+        else
+        {
+            skinMarks.emitting = false;
+            skidSound.mute = true;
+        }
+    }
+
+    private void EngineSound()
+    {
+        if (enabled)
+        {
+            engineSound.mute = false; 
+            engineSound.pitch = Mathf.Lerp(minPitch, maxPitch, Mathf.Abs(curentVelocityOffset));
+        }
+        else
+        {
+            engineSound.mute = true;
+        }
     }
 }
