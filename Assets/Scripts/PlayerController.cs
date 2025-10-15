@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponentInChildren<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        
     }
 
     void Update()
@@ -26,9 +27,12 @@ public class PlayerController : MonoBehaviour
 
     private void AnimatorController()
     {
+        float xVelocity = Vector3.Dot(velocity, transform.right);
         float zVelocity = Vector3.Dot(velocity, transform.forward);
 
+        animator.SetFloat("xVelocity", xVelocity);
         animator.SetFloat("zVelocity", zVelocity);
+        
     }
 
     private void ApplyMovemet()
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
         velocity.x = move.x;
         velocity.z = move.z;
 
-        Debug.Log(velocity.z);
+        Debug.Log(velocity.x);
 
         // Nhảy
         if (Input.GetButtonDown("Jump") && isGrounded)
