@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using DG.Tweening;
 
 
 public class BikeInteraction : MonoBehaviour
@@ -8,6 +9,7 @@ public class BikeInteraction : MonoBehaviour
     public static event Action OnExitBike;
 
     public GameObject interactionUI;       // Canvas "E to drive"
+    public GameObject miniMap;
     public Camera playerCamera;            // Camera nhân vật
     public Camera bikeCamera;              // Camera xe
     public MonoBehaviour playerController; // Script điều khiển nhân vật
@@ -33,10 +35,12 @@ public class BikeInteraction : MonoBehaviour
         if (isNear && !isDriving && Input.GetKeyDown(KeyCode.E))
         {
             EnterBike();
+            OpenMap() ;
         }
         else if (isDriving && Input.GetKeyDown(KeyCode.E))
         {
             ExitBike();
+            CloseMap();
         }
     }
 
@@ -57,7 +61,16 @@ public class BikeInteraction : MonoBehaviour
         skidSound.Play();
         OnEnterBike?.Invoke();
     }
-
+    void OpenMap() 
+    {
+        var rect = miniMap.GetComponent<RectTransform>();
+        rect.DOMove(new Vector3(50, 50, 0), 1f, true).SetEase(Ease.InOutBounce);
+    }
+    void CloseMap()
+    {
+        var rect = miniMap.GetComponent<RectTransform>();
+        rect.DOMove(new Vector3(50, -300, 0), 1f, true).SetEase(Ease.InOutBounce);
+    }
     void ExitBike()
     {
         isDriving = false;
