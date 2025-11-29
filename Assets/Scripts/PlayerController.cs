@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         velocity.x = move.x;
         velocity.z = move.z;
 
-        Debug.Log(velocity.x);
 
         // Nhảy
         if (Input.GetButtonDown("Jump") && isGrounded)

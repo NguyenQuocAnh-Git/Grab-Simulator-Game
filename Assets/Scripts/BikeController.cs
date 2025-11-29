@@ -36,7 +36,11 @@ public class BikeController : MonoBehaviour
         skinMarks.emitting = false;
 
     }
-
+    // for collider
+    private void OnDisable()
+    {
+        curentVelocityOffset = 0;
+    }
     private void Update()
     {
         moveInput = Input.GetAxis("Vertical");
@@ -46,7 +50,6 @@ public class BikeController : MonoBehaviour
 
         velocity = BikeBody.transform.InverseTransformDirection(BikeBody.velocity);
         curentVelocityOffset = velocity.z / maxSpeed;
-        Debug.Log(SphereRB.velocity.magnitude);
     }
 
     private void FixedUpdate()

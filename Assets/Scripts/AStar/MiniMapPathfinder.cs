@@ -6,6 +6,22 @@ public class MiniMapPathfinder : MonoBehaviour
 {
     public MinimapGrid grid;
     public int penaltyNearWall = 10;
+    public List<Vector3> FindPathWorld(Vector3 startPos, Vector3 targetPos)
+    {
+        // dùng thuật toán bạn chọn — A, B, C, hoặc D
+        // mình chọn D vì có penaltyNearWall (tối ưu thực tế)
+        List<Node> nodePath = FindPathD(startPos, targetPos);
+
+        if (nodePath == null || nodePath.Count == 0)
+            return null;
+
+        List<Vector3> result = new List<Vector3>(nodePath.Count);
+
+        for (int i = 0; i < nodePath.Count; i++)
+            result.Add(nodePath[i].worldPosition);
+
+        return result;
+    }
     public List<Node> FindPathA(Vector3 startPos, Vector3 targetPos)
     {
         Node startNode = grid.NodeFromWorldPoint(startPos);
@@ -166,10 +182,7 @@ public class MiniMapPathfinder : MonoBehaviour
                     continue;
 
 
-                // ----------------------------
-                // 🧩 BẮT ĐẦU: thêm penalty khi gần tường
                 int wallPenalty = neighbor.isNearWall ? penaltyNearWall : 0;  // bạn có thể thử 10, 15, 25
-                                                                 // ----------------------------
 
                 int newCost = current.gCost + GetDistanceC(current, neighbor) + wallPenalty;
 
@@ -236,5 +249,8 @@ public class MiniMapPathfinder : MonoBehaviour
         }
         return neighbours;
     }
-    
+    public List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
+    {
+        return FindPathD(startPos, targetPos);
+    }
 }
