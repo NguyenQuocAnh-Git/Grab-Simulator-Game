@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Pickup
+  - Drop
   layers:
   - Default
   - TransparentFX
@@ -18,9 +20,9 @@ TagManager:
   - Wall
   - Bike
   - Bro
-  - 
-  - 
-  - 
+  - Pickup
+  - Drop
+  - LinePath
   - Ground
   - 
   - 
