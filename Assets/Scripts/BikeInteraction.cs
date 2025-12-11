@@ -10,8 +10,6 @@ public class BikeInteraction : MonoBehaviour
 
     public GameObject interactionUI;       // Canvas "E to drive"
     public GameObject miniMap;
-    public Camera playerCamera;            // Camera nhân vật
-    public Camera bikeCamera;              // Camera xe
     public MonoBehaviour playerController; // Script điều khiển nhân vật
     public MonoBehaviour bikeController;   // Script điều khiển xe
     public Transform player;
@@ -22,25 +20,35 @@ public class BikeInteraction : MonoBehaviour
     private bool isNear = false;
     private bool isDriving = false;
 
+    private bool isShowMap = false;
     void Start()
     {
+        transform.position = GameManager.Instance.GetBikeOriginalPos().position;
         interactionUI.SetActive(false);
         bikeController.enabled = false;
-        bikeCamera.gameObject.SetActive(false);
-
+    }
+    void OnEnable()
+    {
+        EventManager.OnPlayerDead += OnPlayerDead;
+    }
+    
+    void OnDisable()
+    {
+        EventManager.OnPlayerDead -= OnPlayerDead;
     }
 
     void Update()
     {
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         if (isNear && !isDriving && Input.GetKeyDown(KeyCode.E))
         {
             EnterBike();
-            OpenMap() ;
         }
         else if (isDriving && Input.GetKeyDown(KeyCode.E))
         {
             ExitBike();
-            CloseMap();
         }
     }
 
@@ -48,26 +56,29 @@ public class BikeInteraction : MonoBehaviour
     {
         isDriving = true;
         interactionUI.SetActive(false);
-
+        
         // Disable player controller + camera
         playerController.enabled = false;
         player.gameObject.SetActive(false);
-            playerCamera.gameObject.SetActive(false);
-
+        CameraManager.Instance.SwitchToBikeCamera();
         // Enable xe
         bikeController.enabled = true;
-        bikeCamera.gameObject.SetActive(true);
         engineSound.Play();
         skidSound.Play();
+        OpenMap();
         OnEnterBike?.Invoke();
     }
-    void OpenMap() 
+    void OpenMap()
     {
+        if (isShowMap) return;
+        isShowMap = true;
         var rect = miniMap.GetComponent<RectTransform>();
         rect.DOMove(new Vector3(50, 50, 0), 1f, true).SetEase(Ease.InOutBounce);
     }
     void CloseMap()
     {
+        if(!isShowMap) return;
+        isShowMap = false;
         var rect = miniMap.GetComponent<RectTransform>();
         rect.DOMove(new Vector3(50, -300, 0), 1f, true).SetEase(Ease.InOutBounce);
     }
@@ -78,18 +89,20 @@ public class BikeInteraction : MonoBehaviour
         // Enable player lại
         player.gameObject.SetActive(true);
         playerController.enabled = true;
-        playerCamera.gameObject.SetActive(true);
+        CameraManager.Instance.SwitchToPlayerCamera();
 
         // Disable xe
         bikeController.enabled = false;
-        bikeCamera.gameObject.SetActive(false);
         engineSound.Stop();
         skidSound.Stop();
+        CloseMap();
         OnExitBike?.Invoke();
     }
-
     void OnTriggerEnter(Collider other)
     {
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         if (other.CompareTag("Player"))
         {
             isNear = true;
@@ -100,10 +113,30 @@ public class BikeInteraction : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         if (other.CompareTag("Player"))
         {
             isNear = false;
             interactionUI.SetActive(false);
         }
+    }
+
+    public void Setup(GameObject interactionUI,GameObject  miniMap,PlayerController playerController,Transform playerTransform)
+    {
+        this.interactionUI = interactionUI;
+        this.miniMap = miniMap;
+        this.playerController = playerController;
+        this.player = playerTransform;
+        var playerState = GetComponent<PlayerState>();
+        playerState.CurrentState = EPlayerState.Available;
+    }
+
+    public void OnPlayerDead(bool isDead)
+    {
+        engineSound.Stop();
+        skidSound.Stop();
+        CloseMap();
     }
 }

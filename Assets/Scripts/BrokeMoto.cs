@@ -26,6 +26,7 @@ public class BrokeMoto : MonoBehaviour
             Debug.Log("Collider with wall");
             broken = true;
             BreakMoto(collision.GetContact(0).point).Forget();
+            GameManager.Instance.GameOver();
         }
     }
     async UniTaskVoid BreakMoto(Vector3 hitPoint)

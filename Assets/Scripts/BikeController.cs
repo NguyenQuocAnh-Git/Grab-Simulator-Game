@@ -43,6 +43,9 @@ public class BikeController : MonoBehaviour
     }
     private void Update()
     {
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         moveInput = Input.GetAxis("Vertical");
         steerInput = Input.GetAxis("Horizontal");
 
@@ -54,6 +57,9 @@ public class BikeController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         Movement();
 
         SkinMarks();

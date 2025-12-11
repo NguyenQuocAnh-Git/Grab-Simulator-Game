@@ -12,7 +12,6 @@ public class PlayerState : MonoBehaviour
     public EPlayerState CurrentState { get { return currentState; } set { currentState = value; OnStateChanged?.Invoke(currentState); } }
 
     public event Action<EPlayerState> OnStateChanged; // event to notify when state changes
-
 }
 public enum EPlayerState
 {

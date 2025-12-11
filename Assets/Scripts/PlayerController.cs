@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        transform.position = GameManager.Instance.GetBroOriginalPos().position;
         controller = GetComponentInChildren<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         
@@ -21,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
         ApplyMovemet();
         AnimatorController();
     }

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
@@ -24,6 +25,12 @@ public class RouteController : MonoBehaviour
 
     private Transform target;
     private Vector3 lastTargetPos;
+
+    private void Start()
+    {
+        EventManager.OnBikeSpawn += OnBikeRespawn;
+    }
+
     void OnEnable()
     {
         playerState.OnStateChanged += OnStateChanged;
@@ -35,6 +42,11 @@ public class RouteController : MonoBehaviour
     }
     void Update()
     {
+        
+        // if not playing game => return 
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        
+        
         // each frame update line and check deviation
         bool needRecompute = false;
         float nearestSqr;
@@ -125,5 +137,14 @@ public class RouteController : MonoBehaviour
     void ClearPath()
     {
         display.Clear();
+    }
+
+    private void OnBikeRespawn(GameObject bike)
+    {
+        ClearPath();
+        playerState = bike.GetComponent<PlayerState>();
+        playerState.OnStateChanged -= OnStateChanged;
+        playerState.OnStateChanged += OnStateChanged;
+        moto = bike.transform;
     }
 }

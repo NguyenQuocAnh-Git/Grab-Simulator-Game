@@ -1,56 +1,122 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawning : MonoBehaviour
 {
     [SerializeField] private GameObject pickupFoodPrefab;
     [SerializeField] private GameObject dropFoodPrefab;
     [SerializeField] private PlayerState playerState;
+    private bool spawnForTheFirstTime = true;
     private void SpawnPickup(Vector3 pickUpPos)
     {
         GameObject.Instantiate(pickupFoodPrefab, pickUpPos, Quaternion.identity);
     }
+
     private void SpawnDrop(Vector3 dropPos)
     {
         GameObject.Instantiate(dropFoodPrefab, dropPos, Quaternion.identity);
     }
     private void Start()
     {
+        EventManager.OnBikeSpawn += OnBikeRespawn;
+        playerState.OnStateChanged -= ResetPlayerStateToNewSpawn;
         playerState.OnStateChanged += ResetPlayerStateToNewSpawn;
-        StartCoroutine(SpawnPickupAfterTime(5f)); // for the first time
+
+        GameManager.Instance.OnGameStateChanged += OnGameOver;
+        GameManager.Instance.OnGameStateChanged += OnGamePlay;
     }
+
     private void ResetPlayerStateToNewSpawn(EPlayerState playerState)
     {
-        if(playerState == EPlayerState.Available)
+        if (GameManager.Instance.GameState != GameState.GamePlaying)
         {
-            StartCoroutine(SpawnPickupAfterTime(5f));
+            return;
+        }
+        
+        if (playerState == EPlayerState.Available)
+        {
+            SpawnPickupAfterTime(5f).Forget();
             // do nothing, wait for next spawn
             return;
         }
+
         if (playerState == EPlayerState.GoingToPickUpFood)
         {
             // do nothing, wait for player to pick up food
             return;
         }
+
         if (playerState == EPlayerState.CarryingFood)
         {
             var dropPos = new Vector3(Random.Range(-20, 20), 1.1f, Random.Range(-20, 20));
             SpawnDrop(dropPos);
         }
+
         // khi nhận được thông báo là đã giao đồ ăn xong thì chuyển trạng thái về Available
         if (playerState == EPlayerState.DeliveredFood)
         {
+            Debug.Log("Delivered food");
             this.playerState.CurrentState = EPlayerState.Available;
             // can implement score or something here
         }
-        
     }
-    IEnumerator SpawnPickupAfterTime(float time)
+
+    private async UniTaskVoid SpawnPickupAfterTime(float time)
     {
-        yield return new WaitForSeconds(time);
+        await UniTask.Delay(TimeSpan.FromSeconds(time));
+        // sau khi mà bắn task đi mà bị đổi game state thì không làm gì cả
+        if (GameManager.Instance.GameState != GameState.GamePlaying)
+        {
+            return;
+        }
+        
         var pickUpPos = new Vector3(Random.Range(-20, 20), 1.1f, Random.Range(-20, 20));
         SpawnPickup(pickUpPos);
+        Debug.Log("SpawnPickupAfterTime: " + time);
         playerState.CurrentState = EPlayerState.GoingToPickUpFood;
+    }
+
+    private void OnBikeRespawn(GameObject bike)
+    {
+        playerState = bike.GetComponent<PlayerState>();
+        playerState.OnStateChanged -= ResetPlayerStateToNewSpawn;
+        playerState.OnStateChanged += ResetPlayerStateToNewSpawn;
+    }
+
+    private void OnGameOver(GameState gameState)
+    {
+        if (gameState == GameState.GameOver)
+        {
+            var pickups = TagRegistry.Get("Pickup").ToArray();
+            for (int i = 0; i < pickups.Length; i++)
+            {
+                var pickup = pickups[i];
+                if (pickup != null) Destroy(pickup);
+            }
+
+            var drops = TagRegistry.Get("Drop").ToArray();
+            for (int i = 0; i < drops.Length; i++)
+            {
+                var drop = drops[i];
+                if (drop != null) Destroy(drop);
+            }
+        }
+    }
+
+    private void OnGamePlay(GameState gameState)
+    {
+        if (gameState == GameState.GamePlaying)
+        {
+            if (spawnForTheFirstTime)
+            {
+                SpawnPickupAfterTime(5).Forget();
+                spawnForTheFirstTime = false;
+            }
+        }
     }
 }

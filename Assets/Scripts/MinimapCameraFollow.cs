@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,16 @@ public class MinimapCameraFollow : MonoBehaviour
     public float smoothSpeed = 10f;
 
     Camera cam;
+
+    private void OnEnable()
+    {
+        EventManager.OnBikeSpawn += OnBikeRespawn;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnBikeSpawn -= OnBikeRespawn;
+    }
 
     void Start()
     {
@@ -38,5 +49,10 @@ public class MinimapCameraFollow : MonoBehaviour
     public void SetOrthoSize(float size)
     {
         cam.orthographicSize = Mathf.Clamp(size, 5f, 200f);
+    }
+
+    public void OnBikeRespawn(GameObject bike)
+    {
+        target = bike.transform;
     }
 }
