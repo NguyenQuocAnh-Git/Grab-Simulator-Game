@@ -1,0 +1,895 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b005825895d854fb9f3e8c1ddab8ed, type: 3}
+  m_Name: RoadGraphData
+  m_EditorClassIdentifier: 
+  lanes:
+  - laneId: e30a9c92-9963-4c2b-961a-8a3e2a4b85c4
+    speedLimit: 10
+    points:
+    - {x: 184, y: 0, z: 86.56}
+    - {x: 184, y: 0, z: 73.79}
+    - {x: 184, y: 0, z: 80}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 94dff7a6-2fde-4cc3-bb1e-1795b133a29a
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 186.56}
+    - {x: 4, y: 0, z: 173.79}
+    - {x: 4, y: 0, z: 180}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 3244ec52-9296-4b06-825c-2fa9cbf4b6f2
+    speedLimit: 10
+    points:
+    - {x: 106.56, y: 0.00000029802322, z: 156}
+    - {x: 93.79, y: -0.00000023841858, z: 156}
+    - {x: 100, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 15b888bb-49e2-4803-b859-d19361787a4c
+    speedLimit: 10
+    points:
+    - {x: 86.56, y: 0.00000029802322, z: 156}
+    - {x: 73.79, y: -0.00000023841858, z: 156}
+    - {x: 80, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 9fbf2cc9-b5c7-45d7-aff9-9a6a81f78585
+    speedLimit: 10
+    points:
+    - {x: 244, y: 0, z: 146.56}
+    - {x: 244, y: 0, z: 133.79}
+    - {x: 244, y: 0, z: 140}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 36b7d747-4561-4d38-a87f-2d3b5a4d03cc
+    speedLimit: 10
+    points:
+    - {x: 46.559998, y: 0.00000029802322, z: 56}
+    - {x: 33.79, y: -0.00000023841858, z: 56}
+    - {x: 40, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 6dcee128-d36b-45e0-a99e-555583927317
+    speedLimit: 10
+    points:
+    - {x: 184, y: 0, z: 46.559998}
+    - {x: 184, y: 0, z: 33.79}
+    - {x: 184, y: 0, z: 40}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 76be337d-1c0a-442b-afa3-0342fc629c98
+    speedLimit: 10
+    points:
+    - {x: 86.56, y: 0.00000029802322, z: 116}
+    - {x: 73.79, y: -0.00000023841858, z: 116}
+    - {x: 80, y: 0, z: 116}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: babe575b-798f-4c37-b01c-b855d28deabf
+    speedLimit: 10
+    points:
+    - {x: 166.56, y: 0.00000029802322, z: -4}
+    - {x: 153.79, y: -0.00000023841858, z: -4}
+    - {x: 160, y: 0, z: -4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 95c2e771-32b7-4991-8a7c-c7876a865c76
+    speedLimit: 10
+    points:
+    - {x: 46.559998, y: 0.00000029802322, z: -4}
+    - {x: 33.79, y: -0.00000023841858, z: -4}
+    - {x: 40, y: 0, z: -4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: f9751c9d-1889-44d0-a689-eb2ae6571383
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 206.56}
+    - {x: 4, y: 0, z: 193.79}
+    - {x: 4, y: 0, z: 200}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 29b59555-8efb-4ed6-b1fd-1acc60e0921e
+    speedLimit: 10
+    points:
+    - {x: 106.56, y: 0.00000029802322, z: -4}
+    - {x: 93.79, y: -0.00000023841858, z: -4}
+    - {x: 100, y: 0, z: -4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 035b5b60-1e11-42aa-b972-d4948d4d15aa
+    speedLimit: 10
+    points:
+    - {x: 146.56, y: 0.00000029802322, z: -4}
+    - {x: 133.79, y: -0.00000023841858, z: -4}
+    - {x: 140, y: 0, z: -4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 233bc9a7-959c-4d02-9ebe-72addc9fd1d8
+    speedLimit: 10
+    points:
+    - {x: 186.56, y: 0.00000029802322, z: 156}
+    - {x: 173.79, y: -0.00000023841858, z: 156}
+    - {x: 180, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: e1ab665d-4854-4237-b62f-b3a25c9b9414
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 46.559998}
+    - {x: 124, y: 0, z: 33.79}
+    - {x: 124, y: 0, z: 40}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 2207a8dc-58fc-4a91-835c-8364f61f195e
+    speedLimit: 10
+    points:
+    - {x: 86.56, y: 0.00000029802322, z: 56}
+    - {x: 73.79, y: -0.00000023841858, z: 56}
+    - {x: 80, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: c5f7ca5d-4440-4ac0-8f51-3350c3bef958
+    speedLimit: 10
+    points:
+    - {x: 166.56, y: 0.00000029802322, z: 156}
+    - {x: 153.79, y: -0.00000023841858, z: 156}
+    - {x: 160, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 6f39243d-1d9d-481d-baf7-5f8f81645533
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 86.56}
+    - {x: 4, y: 0, z: 73.79}
+    - {x: 4, y: 0, z: 80}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 9e5578a9-64cd-42eb-a89f-916769c127b7
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 206.56}
+    - {x: 124, y: 0, z: 193.79}
+    - {x: 124, y: 0, z: 200}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 87fd98f0-5909-47a0-b325-d3e701236902
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 106.56}
+    - {x: 4, y: 0, z: 93.79}
+    - {x: 4, y: 0, z: 100}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 4a856ebc-6ff3-4b4f-b8eb-96b3be6c1255
+    speedLimit: 10
+    points:
+    - {x: 106.56, y: 0.00000029802322, z: 116}
+    - {x: 93.79, y: -0.00000023841858, z: 116}
+    - {x: 100, y: 0, z: 116}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 56a0734e-4cc3-4516-aeb3-40b31515bc33
+    speedLimit: 10
+    points:
+    - {x: 26.559998, y: 0.00000029802322, z: 56}
+    - {x: 13.790001, y: -0.00000023841858, z: 56}
+    - {x: 20, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 7b76efb8-21c9-4525-9dc8-716227b4016e
+    speedLimit: 10
+    points:
+    - {x: 106.56, y: 0.00000029802322, z: 56}
+    - {x: 93.79, y: -0.00000023841858, z: 56}
+    - {x: 100, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: ff41c4c1-6788-4e71-b09f-ed71c61b1ddb
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 86.56}
+    - {x: 124, y: 0, z: 73.79}
+    - {x: 124, y: 0, z: 80}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 373714aa-6698-498a-bc0e-ea56ac650cb8
+    speedLimit: 10
+    points:
+    - {x: 26.559998, y: 0.00000029802322, z: 156}
+    - {x: 13.790001, y: -0.00000023841858, z: 156}
+    - {x: 20, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: e80674c1-c7be-4cb6-bc2d-7b021c79478c
+    speedLimit: 10
+    points:
+    - {x: 64, y: 0, z: 26.559998}
+    - {x: 64, y: 0, z: 13.790001}
+    - {x: 64, y: 0, z: 20}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 11cb3388-2ab3-4364-9038-5ad531a958a6
+    speedLimit: 10
+    points:
+    - {x: 64, y: 0, z: 86.56}
+    - {x: 64, y: 0, z: 73.79}
+    - {x: 64, y: 0, z: 80}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: a5718410-303d-4791-92e9-2af030361983
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 186.56}
+    - {x: 124, y: 0, z: 173.79}
+    - {x: 124, y: 0, z: 180}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: c07e3b33-587a-44fe-a485-cb51be41904d
+    speedLimit: 10
+    points:
+    - {x: 86.56, y: 0.00000029802322, z: -4}
+    - {x: 73.79, y: -0.00000023841858, z: -4}
+    - {x: 80, y: 0, z: -4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 33803bf2-c9a4-426d-91dc-07ed2cdc67a4
+    speedLimit: 10
+    points:
+    - {x: 184, y: 0, z: 26.559998}
+    - {x: 184, y: 0, z: 13.790001}
+    - {x: 184, y: 0, z: 20}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 662b431f-06ee-4f6a-855c-4aa5c66f7a3f
+    speedLimit: 10
+    points:
+    - {x: 244, y: 0, z: 26.559998}
+    - {x: 244, y: 0, z: 13.790001}
+    - {x: 244, y: 0, z: 20}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: fd1ba915-8631-4a88-aae4-67fe04c09447
+    speedLimit: 10
+    points:
+    - {x: 146.56, y: 0.00000029802322, z: 116}
+    - {x: 133.79, y: -0.00000023841858, z: 116}
+    - {x: 140, y: 0, z: 116}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: d412468a-1ec8-4ec9-a7ef-7dc1414436b0
+    speedLimit: 10
+    points:
+    - {x: 166.56, y: 0.00000029802322, z: 116}
+    - {x: 153.79, y: -0.00000023841858, z: 116}
+    - {x: 160, y: 0, z: 116}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: f6fd71c5-f539-4f38-b482-90c6448ca276
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 146.56}
+    - {x: 124, y: 0, z: 133.79}
+    - {x: 124, y: 0, z: 140}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 6b6f82ff-cffd-4753-b836-98ee25b3bf84
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 146.56}
+    - {x: 4, y: 0, z: 133.79}
+    - {x: 4, y: 0, z: 140}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: b866faca-d48a-446c-9627-6cef67698d55
+    speedLimit: 10
+    points:
+    - {x: 64, y: 0, z: 46.559998}
+    - {x: 64, y: 0, z: 33.79}
+    - {x: 64, y: 0, z: 40}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 6ab4b20d-a7b9-454c-92b7-2fdc6d557c10
+    speedLimit: 10
+    points:
+    - {x: 166.56, y: 0.00000029802322, z: 56}
+    - {x: 153.79, y: -0.00000023841858, z: 56}
+    - {x: 160, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 3a03f591-1ade-4272-a1ee-8c4df8751af6
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 26.559998}
+    - {x: 4, y: 0, z: 13.790001}
+    - {x: 4, y: 0, z: 20}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 634f672a-3d2b-4f8e-8994-61218b8e4c23
+    speedLimit: 10
+    points:
+    - {x: 226.56, y: 0.00000029802322, z: 56}
+    - {x: 213.79, y: -0.00000023841858, z: 56}
+    - {x: 220, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: ff44ef34-66e0-4ed4-8b14-25df374f8e67
+    speedLimit: 10
+    points:
+    - {x: 4, y: 0, z: 46.559998}
+    - {x: 4, y: 0, z: 33.79}
+    - {x: 4, y: 0, z: 40}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 39735e29-0266-420d-a865-be7d18f902d7
+    speedLimit: 10
+    points:
+    - {x: 244, y: 0, z: 206.56}
+    - {x: 244, y: 0, z: 193.79}
+    - {x: 244, y: 0, z: 200}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 4b391b52-089a-4e24-a72e-73cb089b133a
+    speedLimit: 10
+    points:
+    - {x: 206.56, y: 0.00000029802322, z: 156}
+    - {x: 193.79, y: -0.00000023841858, z: 156}
+    - {x: 200, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: d6f6cd45-625f-436b-8176-7b7fca89545f
+    speedLimit: 10
+    points:
+    - {x: 146.56, y: 0.00000029802322, z: 156}
+    - {x: 133.79, y: -0.00000023841858, z: 156}
+    - {x: 140, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: e952cf00-168f-4f61-827f-be4d8d308175
+    speedLimit: 10
+    points:
+    - {x: 206.56, y: 0.00000029802322, z: 56}
+    - {x: 193.79, y: -0.00000023841858, z: 56}
+    - {x: 200, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: dd50e84e-f0d9-48bc-bbdf-7b31860307ae
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 26.559998}
+    - {x: 124, y: 0, z: 13.790001}
+    - {x: 124, y: 0, z: 20}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: dd7449a8-4d65-463b-ab0d-757c842b6a12
+    speedLimit: 10
+    points:
+    - {x: 226.56, y: 0.00000029802322, z: 156}
+    - {x: 213.79, y: -0.00000023841858, z: 156}
+    - {x: 220, y: 0, z: 156}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 3944ba8d-5ed9-4eb8-97fb-d880b5766533
+    speedLimit: 10
+    points:
+    - {x: 124, y: 0, z: 106.56}
+    - {x: 124, y: 0, z: 93.79}
+    - {x: 124, y: 0, z: 100}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 76c9bdc4-9a63-4123-a786-f2c6cbdc6495
+    speedLimit: 10
+    points:
+    - {x: 244, y: 0, z: 186.56}
+    - {x: 244, y: 0, z: 173.79}
+    - {x: 244, y: 0, z: 180}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: db11291b-8bbe-47b3-9344-4082697cafb5
+    speedLimit: 10
+    points:
+    - {x: 64, y: 0, z: 106.56}
+    - {x: 64, y: 0, z: 93.79}
+    - {x: 64, y: 0, z: 100}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 29c2d2bc-6daf-4f1f-8829-a0672881662e
+    speedLimit: 10
+    points:
+    - {x: 26.559998, y: 0.00000029802322, z: -4}
+    - {x: 13.790001, y: -0.00000023841858, z: -4}
+    - {x: 20, y: 0, z: -4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: d0575a29-a655-43e5-b338-2e8b6e4f16a3
+    speedLimit: 10
+    points:
+    - {x: 244, y: 0, z: 46.559998}
+    - {x: 244, y: 0, z: 33.79}
+    - {x: 244, y: 0, z: 40}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 9f524189-2a8b-4d67-a1ef-9843735d4f0e
+    speedLimit: 10
+    points:
+    - {x: 206.56, y: 0.00000029802322, z: 116}
+    - {x: 193.79, y: -0.00000023841858, z: 116}
+    - {x: 200, y: 0, z: 116}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 7f2519b0-db56-4230-ab29-eacc930b6d67
+    speedLimit: 10
+    points:
+    - {x: 146.56, y: 0.00000029802322, z: 56}
+    - {x: 133.79, y: -0.00000023841858, z: 56}
+    - {x: 140, y: 0, z: 56}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 5b26a9ad-86bd-4d45-a58f-2fb8e3e9d96b
+    speedLimit: 10
+    points:
+    - {x: 184, y: 0, z: 106.56}
+    - {x: 184, y: 0, z: 93.79}
+    - {x: 184, y: 0, z: 100}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 742ab4f9-416c-4c7f-a4ff-b1af935d03b8
+    speedLimit: 10
+    points:
+    - {x: 226.56, y: 0.00000029802322, z: 116}
+    - {x: 213.79, y: -0.00000023841858, z: 116}
+    - {x: 220, y: 0, z: 116}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: a246d622-e70d-487a-8419-1a2bf120307c
+    speedLimit: 10
+    points:
+    - {x: 176, y: 0, z: 73.31}
+    - {x: 176, y: 0, z: 80}
+    - {x: 176, y: 0, z: 86.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 5a5bf7bd-5deb-41d8-b79b-a6175242b35e
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 173.31}
+    - {x: -4, y: 0, z: 180}
+    - {x: -4, y: 0, z: 186.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 1ea51a45-0f74-42af-b4d9-1d806ee8831e
+    speedLimit: 10
+    points:
+    - {x: 93.31, y: -0.00000023841858, z: 164}
+    - {x: 100, y: 0, z: 164}
+    - {x: 106.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: f7864a06-df45-43c2-ba12-60f4627c65ae
+    speedLimit: 10
+    points:
+    - {x: 73.31, y: -0.00000023841858, z: 164}
+    - {x: 80, y: 0, z: 164}
+    - {x: 86.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: e899a0c5-9e5f-4a51-9742-22f9b8a05885
+    speedLimit: 10
+    points:
+    - {x: 236, y: 0, z: 133.31}
+    - {x: 236, y: 0, z: 140}
+    - {x: 236, y: 0, z: 146.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 42706ec0-1097-4b65-b918-60504309ab45
+    speedLimit: 10
+    points:
+    - {x: 33.31, y: -0.00000023841858, z: 64}
+    - {x: 40, y: 0, z: 64}
+    - {x: 46.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 79316fc3-a23b-46a1-b509-d11c0dbbfb46
+    speedLimit: 10
+    points:
+    - {x: 176, y: 0, z: 33.309998}
+    - {x: 176, y: 0, z: 40}
+    - {x: 176, y: 0, z: 46.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: c0acf11c-703d-4c6c-ad45-59e41d5ffadc
+    speedLimit: 10
+    points:
+    - {x: 73.31, y: -0.00000023841858, z: 124}
+    - {x: 80, y: 0, z: 124}
+    - {x: 86.75, y: 0.00000029802322, z: 124}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 04de376e-d110-4bb9-a781-c691a82728d0
+    speedLimit: 10
+    points:
+    - {x: 153.31, y: -0.00000023841858, z: 4}
+    - {x: 160, y: 0, z: 4}
+    - {x: 166.75, y: 0.00000029802322, z: 4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 412a28c0-49d6-4930-9d40-b5f298fe6847
+    speedLimit: 10
+    points:
+    - {x: 33.31, y: -0.00000023841858, z: 4}
+    - {x: 40, y: 0, z: 4}
+    - {x: 46.75, y: 0.00000029802322, z: 4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 4afd849a-9b3f-43f9-a387-a4248ba77893
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 193.31}
+    - {x: -4, y: 0, z: 200}
+    - {x: -4, y: 0, z: 206.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 74f47efe-c7fb-4f0a-b5c9-0213b5c69a63
+    speedLimit: 10
+    points:
+    - {x: 93.31, y: -0.00000023841858, z: 4}
+    - {x: 100, y: 0, z: 4}
+    - {x: 106.75, y: 0.00000029802322, z: 4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 9d18650b-7e62-457b-98ce-2648cedce860
+    speedLimit: 10
+    points:
+    - {x: 133.31, y: -0.00000023841858, z: 4}
+    - {x: 140, y: 0, z: 4}
+    - {x: 146.75, y: 0.00000029802322, z: 4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 2c4f9852-60cc-4916-a843-40d981923ef1
+    speedLimit: 10
+    points:
+    - {x: 173.31, y: -0.00000023841858, z: 164}
+    - {x: 180, y: 0, z: 164}
+    - {x: 186.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 8e12bed8-9686-4464-a947-4f9b71e4547d
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 33.309998}
+    - {x: 116, y: 0, z: 40}
+    - {x: 116, y: 0, z: 46.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 7070c2d6-f15f-42e1-942e-1d0ffe51ea27
+    speedLimit: 10
+    points:
+    - {x: 73.31, y: -0.00000023841858, z: 64}
+    - {x: 80, y: 0, z: 64}
+    - {x: 86.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: a50ad0a2-8f4a-45f6-b0f3-1f7e8f62300d
+    speedLimit: 10
+    points:
+    - {x: 153.31, y: -0.00000023841858, z: 164}
+    - {x: 160, y: 0, z: 164}
+    - {x: 166.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 371b6246-326a-4d25-9609-a46a81352387
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 73.31}
+    - {x: -4, y: 0, z: 80}
+    - {x: -4, y: 0, z: 86.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: c42a384b-6f4b-486d-8002-aaedcbe2e175
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 193.31}
+    - {x: 116, y: 0, z: 200}
+    - {x: 116, y: 0, z: 206.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 100af04f-ab20-45e9-a1b0-3ca4e390d3df
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 93.31}
+    - {x: -4, y: 0, z: 100}
+    - {x: -4, y: 0, z: 106.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 2e2b1ace-a39b-497e-b8e5-c9e52ffbf3db
+    speedLimit: 10
+    points:
+    - {x: 93.31, y: -0.00000023841858, z: 124}
+    - {x: 100, y: 0, z: 124}
+    - {x: 106.75, y: 0.00000029802322, z: 124}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 26ff9e8f-4600-4646-88af-d6450a1c0de4
+    speedLimit: 10
+    points:
+    - {x: 13.310001, y: -0.00000023841858, z: 64}
+    - {x: 20, y: 0, z: 64}
+    - {x: 26.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 568c9dbf-97a7-4248-af8c-d46c0063de78
+    speedLimit: 10
+    points:
+    - {x: 93.31, y: -0.00000023841858, z: 64}
+    - {x: 100, y: 0, z: 64}
+    - {x: 106.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: ef0347d9-0179-4f10-92a4-33522a5968a7
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 73.31}
+    - {x: 116, y: 0, z: 80}
+    - {x: 116, y: 0, z: 86.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: d6b93472-527a-4a54-b5bc-a8af64f58822
+    speedLimit: 10
+    points:
+    - {x: 13.310001, y: -0.00000023841858, z: 164}
+    - {x: 20, y: 0, z: 164}
+    - {x: 26.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 0db52314-ce3e-4962-bd0a-4e1501b739be
+    speedLimit: 10
+    points:
+    - {x: 56, y: 0, z: 13.309998}
+    - {x: 56, y: 0, z: 20}
+    - {x: 56, y: 0, z: 26.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 9032e4d3-7233-4f22-b6a7-419bf87f5f66
+    speedLimit: 10
+    points:
+    - {x: 56, y: 0, z: 73.31}
+    - {x: 56, y: 0, z: 80}
+    - {x: 56, y: 0, z: 86.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: a7433ea8-10aa-4b35-bea0-768dca3781f8
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 173.31}
+    - {x: 116, y: 0, z: 180}
+    - {x: 116, y: 0, z: 186.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 8e6f5299-de98-45af-ae3d-7fae267096be
+    speedLimit: 10
+    points:
+    - {x: 73.31, y: -0.00000023841858, z: 4}
+    - {x: 80, y: 0, z: 4}
+    - {x: 86.75, y: 0.00000029802322, z: 4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: dfed241b-73ad-4681-90af-3221136dca82
+    speedLimit: 10
+    points:
+    - {x: 176, y: 0, z: 13.309998}
+    - {x: 176, y: 0, z: 20}
+    - {x: 176, y: 0, z: 26.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 6ada1e74-c3d4-4d70-b46f-94c2f0a196fc
+    speedLimit: 10
+    points:
+    - {x: 236, y: 0, z: 13.309998}
+    - {x: 236, y: 0, z: 20}
+    - {x: 236, y: 0, z: 26.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 0b33aaa0-99f1-45e9-a277-cc086f32101a
+    speedLimit: 10
+    points:
+    - {x: 133.31, y: -0.00000023841858, z: 124}
+    - {x: 140, y: 0, z: 124}
+    - {x: 146.75, y: 0.00000029802322, z: 124}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 853db458-7420-4920-afcf-0e5e1045f2c5
+    speedLimit: 10
+    points:
+    - {x: 153.31, y: -0.00000023841858, z: 124}
+    - {x: 160, y: 0, z: 124}
+    - {x: 166.75, y: 0.00000029802322, z: 124}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 5e4672d3-5301-4237-a635-3acb3dc386fb
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 133.31}
+    - {x: 116, y: 0, z: 140}
+    - {x: 116, y: 0, z: 146.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: a6af646c-cc77-4155-90fa-bdf5fc1f57b4
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 133.31}
+    - {x: -4, y: 0, z: 140}
+    - {x: -4, y: 0, z: 146.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 1266820e-e513-46c0-92a1-12384ca57b1d
+    speedLimit: 10
+    points:
+    - {x: 56, y: 0, z: 33.309998}
+    - {x: 56, y: 0, z: 40}
+    - {x: 56, y: 0, z: 46.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 44f47364-92c5-4fbc-b161-5a29f0818b45
+    speedLimit: 10
+    points:
+    - {x: 153.31, y: -0.00000023841858, z: 64}
+    - {x: 160, y: 0, z: 64}
+    - {x: 166.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: c044ba93-3441-42b3-acbb-77385e577d2a
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 13.309998}
+    - {x: -4, y: 0, z: 20}
+    - {x: -4, y: 0, z: 26.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 17dc4f79-d93c-4759-a26e-a657efe24d30
+    speedLimit: 10
+    points:
+    - {x: 213.31, y: -0.00000023841858, z: 64}
+    - {x: 220, y: 0, z: 64}
+    - {x: 226.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 06a851e2-8d10-4b41-8fca-8bade550c9da
+    speedLimit: 10
+    points:
+    - {x: -4, y: 0, z: 33.309998}
+    - {x: -4, y: 0, z: 40}
+    - {x: -4, y: 0, z: 46.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 223444d3-e9cf-4244-831c-91f810d2e263
+    speedLimit: 10
+    points:
+    - {x: 236, y: 0, z: 193.31}
+    - {x: 236, y: 0, z: 200}
+    - {x: 236, y: 0, z: 206.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: f2aee186-a886-4504-9ec7-332eb53ac95a
+    speedLimit: 10
+    points:
+    - {x: 193.31, y: -0.00000023841858, z: 164}
+    - {x: 200, y: 0, z: 164}
+    - {x: 206.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: c153f44c-bd6e-46e9-b6fe-32e0717747b1
+    speedLimit: 10
+    points:
+    - {x: 133.31, y: -0.00000023841858, z: 164}
+    - {x: 140, y: 0, z: 164}
+    - {x: 146.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 6620a100-4c59-4efc-a720-70c2a77f041e
+    speedLimit: 10
+    points:
+    - {x: 193.31, y: -0.00000023841858, z: 64}
+    - {x: 200, y: 0, z: 64}
+    - {x: 206.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: bba497f7-0a4e-4544-81a5-d461814bc370
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 13.309998}
+    - {x: 116, y: 0, z: 20}
+    - {x: 116, y: 0, z: 26.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: b7f60075-07d2-43f5-ab1f-7a46e9679262
+    speedLimit: 10
+    points:
+    - {x: 213.31, y: -0.00000023841858, z: 164}
+    - {x: 220, y: 0, z: 164}
+    - {x: 226.75, y: 0.00000029802322, z: 164}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 90cfab77-a4bc-4e84-aca7-4c8478e9a744
+    speedLimit: 10
+    points:
+    - {x: 116, y: 0, z: 93.31}
+    - {x: 116, y: 0, z: 100}
+    - {x: 116, y: 0, z: 106.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 85e9fbc7-da3a-4ce2-9991-ee23b8aa4a7c
+    speedLimit: 10
+    points:
+    - {x: 236, y: 0, z: 173.31}
+    - {x: 236, y: 0, z: 180}
+    - {x: 236, y: 0, z: 186.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 08c19154-f9c4-4200-b3c6-6c00e3d30a3b
+    speedLimit: 10
+    points:
+    - {x: 56, y: 0, z: 93.31}
+    - {x: 56, y: 0, z: 100}
+    - {x: 56, y: 0, z: 106.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 91568a20-9a33-42cc-b542-c181c3d537f5
+    speedLimit: 10
+    points:
+    - {x: 13.310001, y: -0.00000023841858, z: 4}
+    - {x: 20, y: 0, z: 4}
+    - {x: 26.75, y: 0.00000029802322, z: 4}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 4906308b-ad11-4b3e-958c-09839c4ab27f
+    speedLimit: 10
+    points:
+    - {x: 236, y: 0, z: 33.309998}
+    - {x: 236, y: 0, z: 40}
+    - {x: 236, y: 0, z: 46.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 2149cfd0-163e-4b4f-904b-7d598581daa2
+    speedLimit: 10
+    points:
+    - {x: 193.31, y: -0.00000023841858, z: 124}
+    - {x: 200, y: 0, z: 124}
+    - {x: 206.75, y: 0.00000029802322, z: 124}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 84160d9c-0373-4f0c-bca2-10cf920b1808
+    speedLimit: 10
+    points:
+    - {x: 133.31, y: -0.00000023841858, z: 64}
+    - {x: 140, y: 0, z: 64}
+    - {x: 146.75, y: 0.00000029802322, z: 64}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: bce72f48-ff65-42ed-a06d-ce0b17876af5
+    speedLimit: 10
+    points:
+    - {x: 176, y: 0, z: 93.31}
+    - {x: 176, y: 0, z: 100}
+    - {x: 176, y: 0, z: 106.75}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
+  - laneId: 77baec76-f849-427f-b754-075d2b223287
+    speedLimit: 10
+    points:
+    - {x: 213.31, y: -0.00000023841858, z: 124}
+    - {x: 220, y: 0, z: 124}
+    - {x: 226.75, y: 0.00000029802322, z: 124}
+    hasStopLine: 0
+    stopLinePosition: {x: 0, y: 0, z: 0}
