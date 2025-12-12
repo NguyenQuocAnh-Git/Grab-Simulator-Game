@@ -8,8 +8,6 @@ public class MiniMapPathfinder : MonoBehaviour
     public int penaltyNearWall = 10;
     public List<Vector3> FindPathWorld(Vector3 startPos, Vector3 targetPos)
     {
-        // dùng thuật toán bạn chọn — A, B, C, hoặc D
-        // mình chọn D vì có penaltyNearWall (tối ưu thực tế)
         List<Node> nodePath = FindPathD(startPos, targetPos);
 
         if (nodePath == null || nodePath.Count == 0)
@@ -154,8 +152,10 @@ public class MiniMapPathfinder : MonoBehaviour
     public List<Node> FindPathD(Vector3 startPos, Vector3 targetPos)
     {
         Node startNode = grid.NodeFromWorldPoint(startPos);
+        Debug.Log($"Start node: {startNode.gridX} - {startNode.gridY}");
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
-
+        Debug.Log($"targetNode: {targetNode.gridX} - {targetNode.gridY}");
+        
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
@@ -169,10 +169,10 @@ public class MiniMapPathfinder : MonoBehaviour
                     (openSet[i].fCost == current.fCost && openSet[i].hCost < current.hCost))
                     current = openSet[i];
             }
-
+            
             openSet.Remove(current);
             closedSet.Add(current);
-
+            
             if (current == targetNode)
                 return RetracePath(startNode, targetNode);
 
@@ -182,10 +182,10 @@ public class MiniMapPathfinder : MonoBehaviour
                     continue;
 
 
-                int wallPenalty = neighbor.isNearWall ? penaltyNearWall : 0;  // bạn có thể thử 10, 15, 25
-
-                int newCost = current.gCost + GetDistanceC(current, neighbor) + wallPenalty;
-
+                int wallPenalty = neighbor.wallPenalty;  // Dùng giá trị động
+                int newCost = current.gCost + GetDistanceC(current, neighbor) 
+                                            + wallPenalty;
+    
                 if (newCost < neighbor.gCost || !openSet.Contains(neighbor))
                 {
                     neighbor.gCost = newCost;
@@ -228,12 +228,27 @@ public class MiniMapPathfinder : MonoBehaviour
     // C - Euclidean Distance
     int GetDistanceC(Node a, Node b)
     {
+        /*int dx = Mathf.Abs(a.gridX - b.gridX);
+        int dy = Mathf.Abs(a.gridY - b.gridY);
+        return Mathf.RoundToInt(10 * Mathf.Sqrt(dx * dx + dy * dy));*/
+        
         int dx = Mathf.Abs(a.gridX - b.gridX);
         int dy = Mathf.Abs(a.gridY - b.gridY);
-        return Mathf.RoundToInt(10 * Mathf.Sqrt(dx * dx + dy * dy));
+    
+        // Thay vì dùng Euclidean, dùng Manhattan hoặc tăng cost chéo
+        if (dx != 0 && dy != 0) // Di chuyển chéo
+        {
+            // Tăng cost chéo lên để ưu tiên đi thẳng
+            return (dx + dy) * 20;
+        }
+        else // Di chuyển thẳng
+        {
+            return (dx + dy) * 10;
+        }
+        
     }
 
-    List<Node> GetNeighbours(Node node)
+    /*List<Node> GetNeighbours(Node node)
     {
         List<Node> neighbours = new List<Node>();
         for (int x = -1; x <= 1; x++)
@@ -247,6 +262,28 @@ public class MiniMapPathfinder : MonoBehaviour
                     neighbours.Add(grid.grid[checkX, checkY]);
             }
         }
+        return neighbours;
+    }*/
+    
+    List<Node> GetNeighbours(Node node)
+    {
+        List<Node> neighbours = new List<Node>();
+    
+        // Chỉ lấy 4 hướng: lên, xuống, trái, phải (không chéo)
+        int[,] directions = { {0,1}, {0,-1}, {1,0}, {-1,0} };
+    
+        for (int i = 0; i < 4; i++)
+        {
+            int checkX = node.gridX + directions[i,0];
+            int checkY = node.gridY + directions[i,1];
+        
+            if (checkX >= 0 && checkX < grid.grid.GetLength(0) && 
+                checkY >= 0 && checkY < grid.grid.GetLength(1))
+            {
+                neighbours.Add(grid.grid[checkX, checkY]);
+            }
+        }
+    
         return neighbours;
     }
     public List<Node> FindPath(Vector3 startPos, Vector3 targetPos)

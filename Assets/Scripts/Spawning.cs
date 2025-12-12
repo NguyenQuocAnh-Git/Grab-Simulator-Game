@@ -11,10 +11,15 @@ public class Spawning : MonoBehaviour
     [SerializeField] private GameObject pickupFoodPrefab;
     [SerializeField] private GameObject dropFoodPrefab;
     [SerializeField] private PlayerState playerState;
+
+    [SerializeField] private Transform[] pickupPoints;
+    [SerializeField] private Transform[] dropPoints;
+    
     private bool spawnForTheFirstTime = true;
     private void SpawnPickup(Vector3 pickUpPos)
     {
-        GameObject.Instantiate(pickupFoodPrefab, pickUpPos, Quaternion.identity);
+        GameObject go = Instantiate(pickupFoodPrefab, pickUpPos, Quaternion.identity);
+        go.transform.position = pickUpPos + Vector3.up * 0.5f;
     }
 
     private void SpawnDrop(Vector3 dropPos)
@@ -53,7 +58,7 @@ public class Spawning : MonoBehaviour
 
         if (playerState == EPlayerState.CarryingFood)
         {
-            var dropPos = new Vector3(Random.Range(-20, 20), 1.1f, Random.Range(-20, 20));
+            var dropPos = RandomInRange(dropPoints);
             SpawnDrop(dropPos);
         }
 
@@ -75,7 +80,7 @@ public class Spawning : MonoBehaviour
             return;
         }
         
-        var pickUpPos = new Vector3(Random.Range(-20, 20), 1.1f, Random.Range(-20, 20));
+        var pickUpPos = RandomInRange(pickupPoints);
         SpawnPickup(pickUpPos);
         Debug.Log("SpawnPickupAfterTime: " + time);
         playerState.CurrentState = EPlayerState.GoingToPickUpFood;
@@ -107,7 +112,7 @@ public class Spawning : MonoBehaviour
             }
         }
     }
-
+    
     private void OnGamePlay(GameState gameState)
     {
         if (gameState == GameState.GamePlaying)
@@ -118,5 +123,11 @@ public class Spawning : MonoBehaviour
                 spawnForTheFirstTime = false;
             }
         }
+    }
+
+    private Vector3 RandomInRange(Transform[] transforms)
+    {
+        var index = Random.Range(0, transforms.Length);
+        return transforms[index].position;
     }
 }

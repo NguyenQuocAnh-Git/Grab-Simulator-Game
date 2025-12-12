@@ -64,16 +64,8 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.GamePlaying);
 
+        ResetBroState();
         DestroyOldBike();
-
-        bro.SetActive(true);
-        var playerController = bro.GetComponent<PlayerController>();
-        
-        // when play again => return to player state and camera
-        playerController.enabled = true;
-        CameraManager.Instance.SwitchToPlayerCamera();
-        
-        bro.transform.position = broOriginalPos.position;
         GameFactory.Instance.SpawnBike(bikeOriginalPos.position, Quaternion.identity);
     }
 
@@ -81,14 +73,9 @@ public class GameManager : MonoBehaviour
     public void ReturnLobby()
     {
         SetGameState(GameState.Lobby);
-        DestroyOldBike();
-        bro.SetActive(true);
 
-        CameraManager.Instance.SwitchToMainMenuCamera();
-        bro.transform.position = broOriginalPos.position;
-        var playerController = bro.GetComponent<PlayerController>();
-        playerController.enabled = true;
-        
+        ResetBroState();
+        DestroyOldBike();
         GameFactory.Instance.SpawnBike(bikeOriginalPos.position, Quaternion.identity);
     }
 
@@ -113,5 +100,19 @@ public class GameManager : MonoBehaviour
             var bike = currentBikes[i];
             if (bike != null) Destroy(bike);
         }
+    }
+
+    private void ResetBroState()
+    {
+        bro.transform.SetParent(null);
+
+        var playerController = bro.GetComponent<PlayerController>();
+        playerController.SetMouseLook(true);
+        playerController.SetAnimationRiding(false);
+        // when play again => return to player state and camera
+        playerController.enabled = true;
+        
+        bro.transform.position = broOriginalPos.position;
+        CameraManager.Instance.SwitchToPlayerCamera();
     }
 }

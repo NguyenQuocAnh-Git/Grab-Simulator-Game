@@ -8,7 +8,7 @@ public class MinimapGrid : MonoBehaviour
     public float nodeSize = 2f;
     public LayerMask obstacleMask;
     public Node[,] grid;
-
+    public int gridX, gridY; // debug
     int gridSizeX, gridSizeY;
 
     void Start()
@@ -34,21 +34,24 @@ public class MinimapGrid : MonoBehaviour
         }
         UpdateNearWallNodes();
     }
-
+    
     public Node NodeFromWorldPoint(Vector3 worldPos)
     {
-        float percentX = (worldPos.x + gridWorldSize.x / 2) / gridWorldSize.x;
-        float percentY = (worldPos.z + gridWorldSize.y / 2) / gridWorldSize.y;
-        percentX = Mathf.Clamp01(percentX);
-        percentY = Mathf.Clamp01(percentY);
-
-        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
-        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+        Vector3 bottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2f - Vector3.forward * gridWorldSize.y / 2f;
+        float relX = worldPos.x - bottomLeft.x;
+        float relZ = worldPos.z - bottomLeft.z;
+    
+        int x = Mathf.FloorToInt(relX / nodeSize);
+        int y = Mathf.FloorToInt(relZ / nodeSize);
+    
+        x = Mathf.Clamp(x, 0, gridSizeX - 1);
+        y = Mathf.Clamp(y, 0, gridSizeY - 1);
+    
         return grid[x, y];
     }
     void UpdateNearWallNodes()
     {
-        foreach (Node n in grid)
+        /*foreach (Node n in grid)
         {
             if (!n.walkable)
             {
@@ -77,24 +80,61 @@ public class MinimapGrid : MonoBehaviour
             }
 
             n.isNearWall = nearWall;
+        }*/
+        for (int x = 0; x < gridSizeX; x++)
+        {
+            for (int y = 0; y < gridSizeY; y++)
+            {
+                if (!grid[x, y].walkable) continue;
+            
+                // Kiểm tra nhiều vòng xung quanh
+                int minDistance = GetDistanceToNearestWall(x, y);
+            
+                if (minDistance == 1)
+                    grid[x, y].wallPenalty = 200;  // Rất gần tường
+                else if (minDistance == 2)
+                    grid[x, y].wallPenalty = 100;  // Gần tường
+                else if (minDistance == 3)
+                    grid[x, y].wallPenalty = 50;   // Hơi gần tường
+                else
+                    grid[x, y].wallPenalty = 0;    // An toàn
+            }
         }
     }
     void OnDrawGizmos()
     {
         if (grid == null)
             return;
-
+        // Chọn màu cơ bản
         foreach (Node n in grid)
         {
-            // Chọn màu cơ bản
             Color color = n.walkable ? Color.white : Color.black;
-
-            // 🟧 Nếu là node gần tường
-            if (n.isNearWall && n.walkable)
-                color = new Color(1f, 0.5f, 0f); // cam
-
+            if (n.isNearWall && n.walkable) color = new Color(1f, 0.5f, 0f);
             Gizmos.color = color;
-            Gizmos.DrawCube(n.worldPosition, Vector3.one * (1 - 0.05f));
+            Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
         }
+    }
+    int GetDistanceToNearestWall(int x, int y)
+    {
+        // Kiểm tra vòng tròn rộng hơn
+        for (int radius = 1; radius <= 3; radius++)
+        {
+            for (int dx = -radius; dx <= radius; dx++)
+            {
+                for (int dy = -radius; dy <= radius; dy++)
+                {
+                    int checkX = x + dx;
+                    int checkY = y + dy;
+                
+                    if (checkX >= 0 && checkX < gridSizeX && 
+                        checkY >= 0 && checkY < gridSizeY)
+                    {
+                        if (!grid[checkX, checkY].walkable)
+                            return radius;
+                    }
+                }
+            }
+        }
+        return 999; // Xa tường
     }
 }

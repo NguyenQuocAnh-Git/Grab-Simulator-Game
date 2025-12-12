@@ -10,7 +10,7 @@ public class Node
     public int gCost, hCost;
     public Node parent;
     public int fCost => gCost + hCost;
-
+    public int wallPenalty;
     public bool isNearWall;
     public int wallLevel = 0;
     public Node(bool w, Vector3 pos, int x, int y)

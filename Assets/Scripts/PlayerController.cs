@@ -11,20 +11,21 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+    [SerializeField] private MouseLook mouseLook;
 
     void Start()
     {
         transform.position = GameManager.Instance.GetBroOriginalPos().position;
         controller = GetComponentInChildren<CharacterController>();
         animator = GetComponentInChildren<Animator>();
-        
+
     }
 
     void Update()
     {
         // if not playing game => return 
         if (!GameManager.Instance.IsGamePlaying()) return;
-        
+
         ApplyMovemet();
         AnimatorController();
     }
@@ -36,7 +37,27 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("xVelocity", xVelocity);
         animator.SetFloat("zVelocity", zVelocity);
-        
+
+    }
+
+    public void SetMouseLook(bool isActive)
+    {
+        mouseLook.enabled = isActive;
+    }
+
+    public void SetAnimationRiding(bool isRide)
+    {
+        animator.SetBool("isRiding", isRide);
+    }
+
+    public void EnableCollider()
+    {
+        controller.enabled = true;
+    }
+
+    public void DisableCollider()
+    {
+        controller.enabled = false;
     }
 
     private void ApplyMovemet()

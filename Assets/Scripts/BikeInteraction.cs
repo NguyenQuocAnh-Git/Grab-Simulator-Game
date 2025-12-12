@@ -10,9 +10,10 @@ public class BikeInteraction : MonoBehaviour
 
     public GameObject interactionUI;       // Canvas "E to drive"
     public GameObject miniMap;
-    public MonoBehaviour playerController; // Script điều khiển nhân vật
-    public MonoBehaviour bikeController;   // Script điều khiển xe
+    public PlayerController playerController; // Script điều khiển nhân vật
+    public BikeController bikeController;   // Script điều khiển xe
     public Transform player;
+    [SerializeField] private Transform playerSeat;
     [Header("Audio")]
     public AudioSource engineSound;
     public AudioSource skidSound;
@@ -58,8 +59,12 @@ public class BikeInteraction : MonoBehaviour
         interactionUI.SetActive(false);
         
         // Disable player controller + camera
+        playerController.SetMouseLook(false);
         playerController.enabled = false;
-        player.gameObject.SetActive(false);
+        playerController.EnableCollider();
+        playerController.SetAnimationRiding(isDriving);
+        player.SetParent(playerSeat);
+        player.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         CameraManager.Instance.SwitchToBikeCamera();
         // Enable xe
         bikeController.enabled = true;
@@ -87,10 +92,13 @@ public class BikeInteraction : MonoBehaviour
         isDriving = false;
 
         // Enable player lại
-        player.gameObject.SetActive(true);
+        playerController.SetAnimationRiding(isDriving);
+        playerController.EnableCollider();
         playerController.enabled = true;
+        playerController.SetMouseLook(true);
+        player.SetParent(null);
         CameraManager.Instance.SwitchToPlayerCamera();
-
+        
         // Disable xe
         bikeController.enabled = false;
         engineSound.Stop();

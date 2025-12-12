@@ -2244,7 +2244,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4827020578715282168}
@@ -2266,6 +2266,7 @@ MonoBehaviour:
   moveSpeed: 2
   jumpHeight: 2
   gravity: -9.81
+  mouseLook: {fileID: 1647941244607334194}
 --- !u!143 &7999454991737512394
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2758,7 +2759,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 49143
+    m_Bits: 507895
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

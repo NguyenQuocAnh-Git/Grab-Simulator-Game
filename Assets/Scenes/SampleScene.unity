@@ -741,6 +741,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 545269983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &238481420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238481421}
+  m_Layer: 0
+  m_Name: "\u0110\u01B0\u1EE3c x\u1EED l\xFD trong GameManager"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &238481421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238481420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 545269983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &238855107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,10 +1462,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BroModel
       objectReference: {fileID: 0}
-    - target: {fileID: 7883812491482500754, guid: bc2b234c7b4d76d49a003bb63879f1c5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1471,6 +1498,8 @@ Transform:
   m_Children:
   - {fileID: 214122141}
   - {fileID: 319154015}
+  - {fileID: 1235125332}
+  - {fileID: 238481421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577246976
@@ -3418,6 +3447,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 882079362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1154788406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154788407}
+  m_Layer: 0
+  m_Name: "Nh\u1EDB \u0111\u1EB7t tag v\xE0 layer cho c\xE1c ch\u1ED7 t\u01B0\u1EDDng,
+    nh\xE0 l\xE0 Wall"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154788407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154788406}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.2576907, y: 0.7996526, z: -0.7913352}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1222546846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,6 +3613,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222546846}
   m_CullTransparentMesh: 1
+--- !u!1 &1235125331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235125332}
+  m_Layer: 0
+  m_Name: "Bro's house l\xE0 v\u1ECB tr\xED xu\u1EA5t hi\u1EC7n c\u1EE7a xe v\xE0
+    bro"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1235125332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235125331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 545269983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1277587811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,7 +3865,7 @@ Transform:
   m_GameObject: {fileID: 1323484985}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 18.2881, y: -16.557209, z: -2.0439794}
+  m_LocalPosition: {x: 18.29, y: -16.557209, z: -43.38}
   m_LocalScale: {x: 15, y: 15.13, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5924,5 +6017,6 @@ SceneRoots:
   - {fileID: 2069589515}
   - {fileID: 772204859}
   - {fileID: 1769004598}
+  - {fileID: 1154788407}
   - {fileID: 882079362}
   - {fileID: 545269983}
