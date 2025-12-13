@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,15 @@ public class PlayerCoin : MonoBehaviour
 {
     private int currentCoin;
     private int totalCoin;
+    public event Action<int> OnTotalCoinChanged;
     [SerializeField] private PlayerState playerState;
+
+    [SerializeField] private TimeDeliveryUI timerUI;
     private void Start()
     {
         currentCoin = 0;
+        totalCoin = 0;
+        OnTotalCoinChanged?.Invoke(totalCoin);
         playerState.OnStateChanged += OnPlayerDeliveredFood;
         GameManager.Instance.OnGameStateChanged += OnGameOver;
         GameManager.Instance.OnGameStateChanged += OnGamePlay;
@@ -25,25 +31,44 @@ public class PlayerCoin : MonoBehaviour
         // Giao hàng thành công
         if(playerState == EPlayerState.DeliveredFood)
         {
-            currentCoin += 15;
+            AddCoin();
+            totalCoin += currentCoin;
+            OnTotalCoinChanged?.Invoke(totalCoin);
             Debug.Log($"current coin: {currentCoin}");
         }
     }
     private void OnGameOver(GameState gameState)
     {
         if(gameState != GameState.GameOver) return;
-        totalCoin += currentCoin;
+
     } 
     private void OnGamePlay(GameState gameState)
     {
         if (gameState != GameState.GamePlaying) return;
         currentCoin = 0;
-    } 
-    private int GetCoinWhenDelivered(int time)
-    {
-        int _baseCoin = 15;
-
-        return _baseCoin;
     }
-    public int GetCurrentCoint() => currentCoin;
+    private void AddCoin()
+    {
+        const int baseCoin = 15;
+        const int maxBonus = 20;
+
+        int snap = timerUI.SnapTime();
+        int max = timerUI.MaxTime();
+
+        int bonus;
+        float ratio = (float)snap / max;
+
+        if (ratio >= 0.66f)
+            bonus = maxBonus;          // nhanh
+        else if (ratio >= 0.33f)
+            bonus = maxBonus / 2;      // trung bình
+        else
+            bonus = 0;                 // chậm
+
+        currentCoin += baseCoin + bonus;
+    }
+    public int GetCurrentCoint()
+    {
+        return currentCoin;
+    }
 }
