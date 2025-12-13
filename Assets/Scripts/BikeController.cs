@@ -7,6 +7,7 @@ public class BikeController : MonoBehaviour
     private float moveInput, steerInput, rayLenght, curentVelocityOffset;
 
     [HideInInspector] public Vector3 velocity;
+    public float currentSpeed = 0;
     public GameObject Handle;
     public Rigidbody SphereRB, BikeBody;
     public TrailRenderer skinMarks;
@@ -53,6 +54,8 @@ public class BikeController : MonoBehaviour
 
         velocity = BikeBody.transform.InverseTransformDirection(BikeBody.velocity);
         curentVelocityOffset = velocity.z / maxSpeed;
+
+        currentSpeed = velocity.magnitude;
     }
 
     private void FixedUpdate()

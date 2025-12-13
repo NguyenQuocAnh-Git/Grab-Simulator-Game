@@ -21,6 +21,10 @@ public class BrokeMoto : MonoBehaviour
         Debug.Log("Collider");
         if (broken) return;
 
+        if(bikeController.currentSpeed <= 15f)
+        {
+            return;
+        }
         if (collision.collider.CompareTag("Wall"))
         {
             Debug.Log("Collider with wall");
