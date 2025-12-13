@@ -3,14 +3,22 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static event Action<GameObject> OnBikeSpawn;
-    public static event Action<bool> OnPlayerDead;
-    public static void BikeSpawned(GameObject bro)
+    public static EventManager Instance;
+    void Awake()
     {
-        OnBikeSpawn?.Invoke(bro);
+        if(Instance != null) return;
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    public event Action<GameObject> OnBikeSpawn;
+    public event Action<bool> OnPlayerDead;
+    public void BikeSpawned(GameObject bike)
+    {
+        Debug.Log("Invoking OnBikeSpawn");
+        OnBikeSpawn?.Invoke(bike);
     }
 
-    public static void PlayerDeadInvoke(bool isDead)
+    public void PlayerDeadInvoke(bool isDead)
     {
         OnPlayerDead?.Invoke(isDead);
     }

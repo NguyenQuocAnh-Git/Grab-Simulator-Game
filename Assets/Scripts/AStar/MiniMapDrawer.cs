@@ -5,7 +5,7 @@ using UnityEngine;
 public class MiniMapDrawer : MonoBehaviour
 {
     public RectTransform minimapRect;
-    public Vector2 worldSize = new Vector2(200, 200); // kích thước thật của bản đồ 3D
+    public Vector2 worldSize = new Vector2(300, 260); // kích thước thật của bản đồ 3D
 
     public Vector2 WorldToMap(Vector3 w)
     {

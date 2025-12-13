@@ -15,12 +15,12 @@ public class MinimapCameraFollow : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnBikeSpawn += OnBikeRespawn;
+        EventManager.Instance.OnBikeSpawn += OnBikeRespawn;
     }
 
     private void OnDisable()
     {
-        EventManager.OnBikeSpawn -= OnBikeRespawn;
+        EventManager.Instance.OnBikeSpawn -= OnBikeRespawn;
     }
 
     void Start()

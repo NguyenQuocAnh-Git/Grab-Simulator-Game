@@ -152,9 +152,7 @@ public class MiniMapPathfinder : MonoBehaviour
     public List<Node> FindPathD(Vector3 startPos, Vector3 targetPos)
     {
         Node startNode = grid.NodeFromWorldPoint(startPos);
-        Debug.Log($"Start node: {startNode.gridX} - {startNode.gridY}");
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
-        Debug.Log($"targetNode: {targetNode.gridX} - {targetNode.gridY}");
         
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();

@@ -8,7 +8,7 @@ public class PickupTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            PlayerState playerState = other.GetComponent<PlayerState>();
+            PlayerState playerState = other.GetComponentInChildren<PlayerState>();
             if(playerState != null && playerState.CurrentState == EPlayerState.GoingToPickUpFood)
             {
                 Debug.Log("Player has picked up the food!");

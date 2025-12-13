@@ -28,7 +28,7 @@ public class RouteController : MonoBehaviour
 
     private void Start()
     {
-        EventManager.OnBikeSpawn += OnBikeRespawn;
+        EventManager.Instance.OnBikeSpawn += OnBikeRespawn;
     }
 
     void OnEnable()
@@ -142,9 +142,7 @@ public class RouteController : MonoBehaviour
     private void OnBikeRespawn(GameObject bike)
     {
         ClearPath();
-        playerState = bike.GetComponent<PlayerState>();
-        playerState.OnStateChanged -= OnStateChanged;
-        playerState.OnStateChanged += OnStateChanged;
+        Debug.Log($"set bike transform: {bike.transform}");
         moto = bike.transform;
     }
 }

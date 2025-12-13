@@ -30,12 +30,12 @@ public class BikeInteraction : MonoBehaviour
     }
     void OnEnable()
     {
-        EventManager.OnPlayerDead += OnPlayerDead;
+        EventManager.Instance.OnPlayerDead += OnPlayerDead;
     }
     
     void OnDisable()
     {
-        EventManager.OnPlayerDead -= OnPlayerDead;
+        EventManager.Instance.OnPlayerDead -= OnPlayerDead;
     }
 
     void Update()
@@ -137,8 +137,6 @@ public class BikeInteraction : MonoBehaviour
         this.miniMap = miniMap;
         this.playerController = playerController;
         this.player = playerTransform;
-        var playerState = GetComponent<PlayerState>();
-        playerState.CurrentState = EPlayerState.Available;
     }
 
     public void OnPlayerDead(bool isDead)

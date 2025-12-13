@@ -82,7 +82,7 @@ public class MiniMapPathDisplay : MonoBehaviour
         // if nearest distance bigger than threshold -> recompute recommended
         return nearestSqr > maxAllowedDeviationSqr;
     }
-
+    
     void TrimVisitedByPosition(Vector3 motoPos)
     {
         if (IsEmpty) return;

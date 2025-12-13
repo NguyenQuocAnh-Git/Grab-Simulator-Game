@@ -28,7 +28,6 @@ public class Spawning : MonoBehaviour
     }
     private void Start()
     {
-        EventManager.OnBikeSpawn += OnBikeRespawn;
         playerState.OnStateChanged -= ResetPlayerStateToNewSpawn;
         playerState.OnStateChanged += ResetPlayerStateToNewSpawn;
 
@@ -84,13 +83,6 @@ public class Spawning : MonoBehaviour
         SpawnPickup(pickUpPos);
         Debug.Log("SpawnPickupAfterTime: " + time);
         playerState.CurrentState = EPlayerState.GoingToPickUpFood;
-    }
-
-    private void OnBikeRespawn(GameObject bike)
-    {
-        playerState = bike.GetComponent<PlayerState>();
-        playerState.OnStateChanged -= ResetPlayerStateToNewSpawn;
-        playerState.OnStateChanged += ResetPlayerStateToNewSpawn;
     }
 
     private void OnGameOver(GameState gameState)

@@ -79,7 +79,10 @@ public class PanelGameLose : MonoBehaviour
         await tcs.Task.AttachExternalCancellation(ct); // cancel if destroyed
 
         // show coins after panel arrives (replace coinGot with real value)
-        ShowCoinsText(123); // TO-DO: truyền giá trị thật
+        var player = GameManager.Instance.GetThisPlayer();
+        var playerCoin = player.GetComponent<PlayerCoin>();
+        var currentCoin = playerCoin.GetCurrentCoint();
+        ShowCoinsText(currentCoin);
         await UniTask.Delay(showDelayMs, cancellationToken: ct);
         playAgainButton.enabled = true;
         quitButton.enabled = true;

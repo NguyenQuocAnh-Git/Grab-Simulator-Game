@@ -63,9 +63,11 @@ public class GameManager : MonoBehaviour
     public void ReplayGame()
     {
         SetGameState(GameState.GamePlaying);
-
+        Debug.Log("before setup player state");
         ResetBroState();
+        Debug.Log("before destroy old bike");
         DestroyOldBike();
+        Debug.Log("before call spawn");
         GameFactory.Instance.SpawnBike(bikeOriginalPos.position, Quaternion.identity);
     }
 
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.GameOver);
         
-        EventManager.PlayerDeadInvoke(true);
+        EventManager.Instance.PlayerDeadInvoke(true);
     }
     private void DestroyOldBike()
     {
@@ -111,8 +113,13 @@ public class GameManager : MonoBehaviour
         playerController.SetAnimationRiding(false);
         // when play again => return to player state and camera
         playerController.enabled = true;
-        
+        var playerState = bro.GetComponent<PlayerState>();
+        playerState.CurrentState = EPlayerState.Available;
         bro.transform.position = broOriginalPos.position;
         CameraManager.Instance.SwitchToPlayerCamera();
+    }
+    public GameObject GetThisPlayer()
+    {
+        return bro;
     }
 }

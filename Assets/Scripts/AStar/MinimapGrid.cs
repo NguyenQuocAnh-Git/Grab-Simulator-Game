@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MinimapGrid : MonoBehaviour
@@ -22,13 +23,32 @@ public class MinimapGrid : MonoBehaviour
     {
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 bottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
+        float nodeSizeX = 1f;
+        float nodeSizeY = 1f;
+        float checkHeight = 1f;
 
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                Vector3 worldPoint = bottomLeft + Vector3.right * (x * nodeSize + nodeSize / 2) + Vector3.forward * (y * nodeSize + nodeSize / 2);
-                bool walkable = !(Physics.CheckSphere(worldPoint, nodeSize / 2, obstacleMask));
+                Vector3 worldPoint =
+                    bottomLeft
+                    + Vector3.right   * (x * nodeSizeX + nodeSizeX * 0.5f)
+                    + Vector3.forward * (y * nodeSizeY + nodeSizeY * 0.5f);
+
+                Vector3 halfExtents = new Vector3(
+                    nodeSizeX * 0.5f,   // 150
+                    checkHeight,        // 0.5–1.0
+                    nodeSizeY * 0.5f    // 140
+                );
+
+                bool walkable = !Physics.CheckBox(
+                    worldPoint,
+                    halfExtents,
+                    Quaternion.identity,
+                    obstacleMask
+                );
+
                 grid[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
@@ -89,13 +109,18 @@ public class MinimapGrid : MonoBehaviour
             
                 // Kiểm tra nhiều vòng xung quanh
                 int minDistance = GetDistanceToNearestWall(x, y);
-            
                 if (minDistance == 1)
                     grid[x, y].wallPenalty = 200;  // Rất gần tường
                 else if (minDistance == 2)
                     grid[x, y].wallPenalty = 100;  // Gần tường
                 else if (minDistance == 3)
-                    grid[x, y].wallPenalty = 50;   // Hơi gần tường
+                    grid[x, y].wallPenalty = 100;   // Hơi gần tường
+                else if(minDistance == 4)
+                    grid[x, y].wallPenalty = 50;    // hơi hơi gần tường
+                else if(minDistance == 5)
+                    grid[x, y].wallPenalty = 50;
+                else if(minDistance == 6)
+                    grid[x, y].wallPenalty = 25;
                 else
                     grid[x, y].wallPenalty = 0;    // An toàn
             }
@@ -108,16 +133,39 @@ public class MinimapGrid : MonoBehaviour
         // Chọn màu cơ bản
         foreach (Node n in grid)
         {
-            Color color = n.walkable ? Color.white : Color.black;
-            if (n.isNearWall && n.walkable) color = new Color(1f, 0.5f, 0f);
-            Gizmos.color = color;
-            Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+            if(!n.walkable)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+                continue;
+            }
+            if(n.wallPenalty == 200)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+            }else if(n.wallPenalty == 100)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+            }else if(n.wallPenalty == 50)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+            }else if(n.wallPenalty == 25)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+            }else
+            {
+                Gizmos.color = Color.white;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeSize * 0.9f));
+            }
         }
     }
     int GetDistanceToNearestWall(int x, int y)
     {
         // Kiểm tra vòng tròn rộng hơn
-        for (int radius = 1; radius <= 3; radius++)
+        for (int radius = 1; radius <= 10; radius++)
         {
             for (int dx = -radius; dx <= radius; dx++)
             {

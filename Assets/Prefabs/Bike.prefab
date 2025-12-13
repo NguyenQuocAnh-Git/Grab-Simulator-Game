@@ -566,12 +566,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806535842744060778}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.412, z: 0.089}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.28, z: -0.2179955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3514956578182347230}
+  m_Father: {fileID: 620500365515226600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3894329162211837067
 GameObject:
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 653358966912267639}
   m_Layer: 7
   m_Name: Bike_body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -735,6 +735,7 @@ Transform:
   - {fileID: 4029368184932952045}
   - {fileID: 3986397426398317271}
   - {fileID: 7381512386660708694}
+  - {fileID: 68594010360661567}
   m_Father: {fileID: 3514956578182347230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &9014991466338911659
@@ -1015,7 +1016,6 @@ GameObject:
   - component: {fileID: 2913130908125989312}
   - component: {fileID: 7959367118424496157}
   - component: {fileID: 476556837018392945}
-  - component: {fileID: 6747497124039137915}
   - component: {fileID: 6830309842854379448}
   m_Layer: 10
   m_Name: Bike
@@ -1041,7 +1041,6 @@ Transform:
   - {fileID: 620500365515226600}
   - {fileID: 1103712445090315430}
   - {fileID: 4134236976427650206}
-  - {fileID: 68594010360661567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2737468368384641229
@@ -1312,20 +1311,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6747497124039137915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595858650411248178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c61bb0b8a8f814e8fa5a2c7b232ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCarryingFood: 0
-  currentState: 3
 --- !u!114 &6830309842854379448
 MonoBehaviour:
   m_ObjectHideFlags: 0

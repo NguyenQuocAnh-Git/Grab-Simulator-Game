@@ -8,7 +8,7 @@ public class DropTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            PlayerState playerState = other.GetComponent<PlayerState>();
+            PlayerState playerState = other.GetComponentInChildren<PlayerState>();
             if(playerState != null && playerState.CurrentState == EPlayerState.CarryingFood)
             {
                 Debug.Log("Player has dropped off the food!");
