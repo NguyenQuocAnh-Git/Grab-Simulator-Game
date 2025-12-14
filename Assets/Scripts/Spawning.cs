@@ -14,17 +14,19 @@ public class Spawning : MonoBehaviour
 
     [SerializeField] private Transform[] pickupPoints;
     [SerializeField] private Transform[] dropPoints;
-    
+    [SerializeField] RouteController route;
     private bool spawnForTheFirstTime = true;
     private void SpawnPickup(Vector3 pickUpPos)
     {
         GameObject go = Instantiate(pickupFoodPrefab, pickUpPos, Quaternion.identity);
         go.transform.position = pickUpPos + Vector3.up * 0.5f;
+        route.SetTarget(go.transform);
     }
 
     private void SpawnDrop(Vector3 dropPos)
     {
-        GameObject.Instantiate(dropFoodPrefab, dropPos, Quaternion.identity);
+        GameObject go = Instantiate(dropFoodPrefab, dropPos, Quaternion.identity);
+        route.SetTarget(go.transform);
     }
     private void Start()
     {

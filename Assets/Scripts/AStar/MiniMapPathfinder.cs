@@ -180,7 +180,7 @@ public class MiniMapPathfinder : MonoBehaviour
                     continue;
 
 
-                int wallPenalty = neighbor.wallPenalty;  // Dùng giá trị động
+                int wallPenalty = neighbor.penalty;  // Dùng giá trị động
                 int newCost = current.gCost + GetDistanceC(current, neighbor) 
                                             + wallPenalty;
     

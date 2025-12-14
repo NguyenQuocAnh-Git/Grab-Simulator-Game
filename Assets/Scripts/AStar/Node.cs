@@ -10,14 +10,16 @@ public class Node
     public int gCost, hCost;
     public Node parent;
     public int fCost => gCost + hCost;
-    public int wallPenalty;
+    public int penalty;
     public bool isNearWall;
     public int wallLevel = 0;
-    public Node(bool w, Vector3 pos, int x, int y)
+    public bool isSidewalk;
+    public Node(bool w, Vector3 pos, int x, int y, bool sw)
     {
         walkable = w;
         worldPosition = pos;
         gridX = x;
         gridY = y;
+        isSidewalk = sw;
     }
 }
