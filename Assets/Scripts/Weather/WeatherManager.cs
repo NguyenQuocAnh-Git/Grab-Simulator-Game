@@ -2,14 +2,17 @@ using System.Threading;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class WeatherManager : MonoBehaviour
 {
+    [SerializeField] RectTransform Aim;
     [SerializeField] private Light sun;
     [SerializeField] List<WeatherEntry> weathers;
 
     [SerializeField] private float timer = 0;
-    [SerializeField] private float timeToChangeWeather = 10f;
+    [SerializeField] private int timeToChangeWeather = 10;
     [SerializeField] private int index = 0;
     [SerializeField] private float transitionTime = 3f;
     private Dictionary<WeatherType, WeatherData> weatherMap;
@@ -22,6 +25,14 @@ public class WeatherManager : MonoBehaviour
         foreach (var w in weathers)
             weatherMap[w.type] = w.profile;
     }
+    private void RotateAim()
+    {
+        int time = timeToChangeWeather*4;
+        Aim
+        .DORotate(new Vector3(0, 0, -360f), time, RotateMode.FastBeyond360)
+        .SetEase(Ease.Linear)
+        .SetLoops(-1, LoopType.Restart);
+    }
     private void Start()
     {
         RenderSettings.fog = true;
@@ -29,6 +40,7 @@ public class WeatherManager : MonoBehaviour
         SetWeather(weathers[0].type); // default
         RenderSettings.skybox = weatherMap[0].skybox;
         DynamicGI.UpdateEnvironment();
+        RotateAim();
     }
     public void Update()
     {

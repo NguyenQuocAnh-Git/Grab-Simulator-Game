@@ -56,7 +56,7 @@ public class BikeController : MonoBehaviour
             steerInput = Input.GetAxis("Horizontal");
         }
 
-        BikeParent.position = SphereRB.transform.position;
+        // BikeParent.position = SphereRB.transform.position;
 
         velocity = BikeBody.transform.InverseTransformDirection(BikeBody.velocity);
         curentVelocityOffset = velocity.z / maxSpeed;
@@ -74,7 +74,10 @@ public class BikeController : MonoBehaviour
 
         EngineSound();
     }
-
+    private void LateUpdate()
+    {
+        BikeParent.position = SphereRB.position;
+    }
     private void Movement()
     {
         if (Grounded())
@@ -89,14 +92,22 @@ public class BikeController : MonoBehaviour
         }
         else
         {
-            Gravity();
+            // Gravity();
         }
         BikeTilt();
     }
 
     private void Acceleration()
     {
-        SphereRB.velocity = Vector3.Lerp(SphereRB.velocity, maxSpeed * moveInput * BikeParent.forward, Time.deltaTime * acceleration);
+        // SphereRB.velocity = Vector3.Lerp(SphereRB.velocity, maxSpeed * moveInput * BikeParent.forward, Time.deltaTime * acceleration);
+        Vector3 target = maxSpeed * moveInput * BikeParent.forward;
+        Vector3 v = SphereRB.velocity;
+
+        v.x = Mathf.Lerp(v.x, target.x, acceleration * Time.fixedDeltaTime);
+        v.z = Mathf.Lerp(v.z, target.z, acceleration * Time.fixedDeltaTime);
+
+        SphereRB.velocity = v;
+
     }
 
     private void Rotation()
@@ -145,10 +156,10 @@ public class BikeController : MonoBehaviour
 
     }
 
-    private void Gravity()
-    {
-        SphereRB.AddForce(gravity * Vector3.down, ForceMode.Acceleration);
-    }
+    // private void Gravity()
+    // {
+    //     SphereRB.AddForce(gravity * Vector3.down, ForceMode.Acceleration);
+    // }
 
     private void SkinMarks()
     {

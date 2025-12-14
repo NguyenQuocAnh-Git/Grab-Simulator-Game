@@ -64,8 +64,12 @@ public class PlayerCoin : MonoBehaviour
             bonus = maxBonus / 2;      // trung bình
         else
             bonus = 0;                 // chậm
-
-        currentCoin += baseCoin + bonus;
+        int coinWillAdd = baseCoin + bonus;
+        Vector3 spawnPos =
+            playerState.transform.position +
+            playerState.transform.forward * 1.2f;
+        FloatingManager.Instance.ShowCoinFloat(coinWillAdd, spawnPos);
+        currentCoin += coinWillAdd;
     }
     public int GetCurrentCoint()
     {
