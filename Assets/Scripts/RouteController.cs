@@ -20,41 +20,52 @@ public class RouteController : MonoBehaviour
 
     Transform target;
     Vector3 lastTargetPos;
+    private void Start()
+    {
+        EventManager.Instance.OnBikeSpawn += OnBikeSpawned;
+    }
+    private void OnBikeSpawned(GameObject bike)
+    {
+        if(bike != null)
+        {
+            moto = bike.transform;
+        }
+    }
     void Update()
-{
-    if (!GameManager.Instance.IsGamePlaying()) return;
-    if (!display.HasPath()) return;
-
-    if (Time.time - lastDeviationCheck < deviationCheckInterval)
-        return;
-
-    lastDeviationCheck = Time.time;
-
-    // visual realtime
-    display.UpdateHeadPosition(moto.position);
-
-    bool needRecompute =
-        display.NeedRecomputeByDeviation(moto.position, maxDeviation)
-        || display.IsHeadDriftTooFar(moto.position, forceRecomputeDistance);
-
-    // topology
-    display.UpdateTrimAndRedraw(moto.position);
-
-    // target moved
-    if (target &&
-        (target.position - lastTargetPos).sqrMagnitude >
-        targetMoveForce * targetMoveForce)
     {
-        needRecompute = true;
-        lastTargetPos = target.position;
-    }
+        if (!GameManager.Instance.IsGamePlaying()) return;
+        if (!display.HasPath()) return;
 
-    if (needRecompute &&
-        Time.time - lastRecomputeTime >= recomputeInterval)
-    {
-        Recompute().Forget();
+        if (Time.time - lastDeviationCheck < deviationCheckInterval)
+            return;
+
+        lastDeviationCheck = Time.time;
+
+        // visual realtime
+        display.UpdateHeadPosition(moto.position);
+
+        bool needRecompute =
+            display.NeedRecomputeByDeviation(moto.position, maxDeviation)
+            || display.IsHeadDriftTooFar(moto.position, forceRecomputeDistance);
+
+        // topology
+        display.UpdateTrimAndRedraw(moto.position);
+
+        // target moved
+        if (target &&
+            (target.position - lastTargetPos).sqrMagnitude >
+            targetMoveForce * targetMoveForce)
+        {
+            needRecompute = true;
+            lastTargetPos = target.position;
+        }
+
+        if (needRecompute &&
+            Time.time - lastRecomputeTime >= recomputeInterval)
+        {
+            Recompute().Forget();
+        }
     }
-}
 
     async UniTaskVoid Recompute()
     {
