@@ -82,7 +82,7 @@ public class PlayerInteraction : MonoBehaviour
         if(!isShowMap) return;
         isShowMap = false;
         var rect = miniMap.GetComponent<RectTransform>();
-        rect.DOMove(new Vector3(50, -300, 0), 1f, true).SetEase(Ease.InOutBounce);
+        rect.DOMove(new Vector3(50, -600, 0), 1f, true).SetEase(Ease.InOutBounce);
     }
     private void OnBikeSpawned(GameObject bike)
     {

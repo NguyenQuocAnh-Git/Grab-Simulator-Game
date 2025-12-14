@@ -201,14 +201,24 @@ public class MiniMapPathfinder : MonoBehaviour
     {
         List<Node> path = new List<Node>();
         Node current = end;
-        while (current != start)
+
+        int safety = 0; // chống loop vô hạn
+        while (current != null && current != start)
         {
             path.Add(current);
             current = current.parent;
+
+            if (++safety > 10000)
+            {
+                Debug.LogError("RetracePath infinite loop detected");
+                break;
+            }
         }
+
         path.Reverse();
         return path;
     }
+
     // A - Manhattan Distance
     int GetDistanceA(Node a, Node b)
     {
