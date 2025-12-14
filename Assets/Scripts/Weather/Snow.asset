@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4010c4a3a35b4a6468241b575262d536, type: 3}
+  m_Name: Snow
+  m_EditorClassIdentifier: 
+  ambientColor: {r: 0.75, g: 0.78, b: 0.8, a: 0}
+  fogColor: {r: 0.9, g: 0.9, b: 0.95, a: 0}
+  fogDensity: 0.006
+  light:
+    color: {r: 0.85, g: 0.9, b: 1, a: 0}
+    intensity: 0.8
+  weatherFX: {fileID: 934663082240514348, guid: 274d4a90a7280fc42b28fb14c2fa7e42, type: 3}
+  skybox: {fileID: 2100000, guid: f2b5f3f20933f434e850db1b710542fd, type: 2}

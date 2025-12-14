@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4010c4a3a35b4a6468241b575262d536, type: 3}
+  m_Name: Rain
+  m_EditorClassIdentifier: 
+  ambientColor: {r: 0.55, g: 0.55, b: 0.55, a: 0}
+  fogColor: {r: 0.55, g: 0.6, b: 0.65, a: 0}
+  fogDensity: 0.004
+  light:
+    color: {r: 0.8, g: 0.85, b: 0.9, a: 0}
+    intensity: 0.7
+  weatherFX: {fileID: 1333589240425345891, guid: 6b77264dec5012249bfd458168e22271, type: 3}
+  skybox: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
