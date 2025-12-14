@@ -58,6 +58,11 @@ public class RouteController : MonoBehaviour
 
     async UniTaskVoid Recompute()
     {
+        if(target == null)
+        {
+            display.Clear();
+            return;
+        }
         lastRecomputeTime = Time.time;
 
         // ✅ MAIN THREAD: snapshot data

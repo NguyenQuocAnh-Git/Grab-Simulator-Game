@@ -32,6 +32,7 @@ public class BrokeMoto : MonoBehaviour
         {
             Debug.Log("Collider with wall");
             broken = true;
+            SoundManager.Instance.PlayDie();
             BreakMoto(collision.GetContact(0).point).Forget();
             GameManager.Instance.GameOver();
         }

@@ -13,6 +13,7 @@ public class DropTrigger : MonoBehaviour
             {
                 Debug.Log("Player has dropped off the food!");
                 playerState.CurrentState = EPlayerState.DeliveredFood;
+                SoundManager.Instance.PlayGetMoney();
                 Destroy(this.gameObject);
             }
         }
