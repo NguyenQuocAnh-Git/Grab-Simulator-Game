@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1964283609505935712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2330,6 +2330,7 @@ GameObject:
   - component: {fileID: 7999454991737512394}
   - component: {fileID: 3888555208412794082}
   - component: {fileID: 204202314950893428}
+  - component: {fileID: 312732892549773729}
   m_Layer: 11
   m_Name: BroModel
   m_TagString: Player
@@ -2353,6 +2354,7 @@ Transform:
   - {fileID: 4827020578715282168}
   - {fileID: 8195096440330639367}
   - {fileID: 1964283609505935712}
+  - {fileID: 807338012928283155}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2918145675458093429
@@ -2370,7 +2372,11 @@ MonoBehaviour:
   moveSpeed: 2
   jumpHeight: 2
   gravity: -9.81
+  controller: {fileID: 0}
   mouseLook: {fileID: 1647941244607334194}
+  isUsing: 1
+  bikeController: {fileID: 0}
+  playerSeat: {fileID: 0}
 --- !u!143 &7999454991737512394
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2422,6 +2428,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec36364603ba0c4386f9328419cfacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerState: {fileID: 312732892549773729}
+  timerUI: {fileID: 0}
+--- !u!114 &312732892549773729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005677153021145635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c61bb0b8a8f814e8fa5a2c7b232ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCarryingFood: 0
+  currentState: 3
 --- !u!1 &5099461488973823413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3120,6 +3142,76 @@ Transform:
   - {fileID: 3542388506074205375}
   m_Father: {fileID: 5459042318766114359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5502394794820261862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 807338012928283155}
+  - component: {fileID: 2109542338160523965}
+  - component: {fileID: 4775991656177691466}
+  m_Layer: 20
+  m_Name: Interact Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &807338012928283155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502394794820261862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5005677153021145634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2109542338160523965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502394794820261862}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0.106170654, y: 0, z: 0}
+--- !u!114 &4775991656177691466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502394794820261862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e88cee2104fdd44b9178217656bd64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EButton: {fileID: 0}
+  miniMap: {fileID: 0}
+  playerController: {fileID: 2918145675458093429}
+  bikeController: {fileID: 0}
 --- !u!1 &5563076041230014003
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,10 @@ public class BrokeMoto : MonoBehaviour
     [SerializeField] private float explodeForce = 5f;
     [SerializeField] private float torqueForce = 3f;
     bool broken = false;
-
+    private void Start()
+    {
+        bikeController ??= GetComponent<BikeController>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collider");

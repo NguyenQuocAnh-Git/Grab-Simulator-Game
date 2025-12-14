@@ -22,7 +22,7 @@ public class CurrentSpeedUI : MonoBehaviour
     {
         if(bike != null)
         {
-            controller = bike.GetComponent<BikeController>();
+            controller = bike.GetComponentInChildren<BikeController>();
         }
     }
 }

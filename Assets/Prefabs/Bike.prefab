@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 6163133507758058499}
   - component: {fileID: 8513549107010066604}
   - component: {fileID: 653358966912267639}
+  - component: {fileID: 2454235972496365587}
   m_Layer: 7
   m_Name: Bike_body
   m_TagString: Player
@@ -813,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab458648fd80cd044af273900f92cb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bikeController: {fileID: 4338699481514591137}
+  bikeController: {fileID: 2454235972496365587}
   frontWheelRb: {fileID: 6575728033248915771}
   backWheelRb: {fileID: 7198095617514836195}
   bodyRb: {fileID: 8297941494956849939}
@@ -833,6 +834,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTag: bikeBody
+--- !u!114 &2454235972496365587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038061819034335560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a550722385391364bb80efdd4b0352e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+  currentSpeed: 0
+  Handle: {fileID: 766967932264925070}
+  SphereRB: {fileID: 1454147378876949382}
+  BikeBody: {fileID: 5734787412455578979}
+  skinMarks: {fileID: 1650270377650294164}
+  engineSound: {fileID: 7959367118424496157}
+  skidSound: {fileID: 476556837018392945}
+  maxSpeed: 30
+  acceleration: 1
+  steerStrength: 100
+  gravity: 20
+  bikeXTileIncrement: 0.9
+  zTiltAngle: 90
+  handleRotVal: 36
+  handleRotSpeed: 0.3
+  skinWight: 0.32
+  minSkinVelocity: 10
+  brakingFactory: 8.8
+  minPitch: 0.164
+  maxPitch: 2.29
+  ground:
+    serializedVersion: 2
+    m_Bits: 98304
+  isUsingBike: 0
+  playerSeat: {fileID: 68594010360661567}
+  BikeParent: {fileID: 3514956578182347230}
 --- !u!1 &7405035915340226179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,9 +1051,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3514956578182347230}
-  - component: {fileID: 2737468368384641229}
-  - component: {fileID: 4338699481514591137}
-  - component: {fileID: 2913130908125989312}
   - component: {fileID: 7959367118424496157}
   - component: {fileID: 476556837018392945}
   - component: {fileID: 6830309842854379448}
@@ -1043,82 +1080,6 @@ Transform:
   - {fileID: 4134236976427650206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2737468368384641229
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595858650411248178}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0422055, y: 0.9529108, z: 1.6694716}
-  m_Center: {x: -0.0042737722, y: 0.049106658, z: 0.10275095}
---- !u!114 &4338699481514591137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595858650411248178}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a550722385391364bb80efdd4b0352e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
-  Handle: {fileID: 766967932264925070}
-  SphereRB: {fileID: 1454147378876949382}
-  BikeBody: {fileID: 5734787412455578979}
-  skinMarks: {fileID: 1650270377650294164}
-  engineSound: {fileID: 7959367118424496157}
-  skidSound: {fileID: 476556837018392945}
-  maxSpeed: 50
-  acceleration: 1
-  steerStrength: 100
-  gravity: 20
-  bikeXTileIncrement: 0.9
-  zTiltAngle: 90
-  handleRotVal: 36
-  handleRotSpeed: 0.3
-  skinWight: 0.32
-  minSkinVelocity: 10
-  brakingFactory: 8.8
-  minPitch: 0.164
-  maxPitch: 2.29
-  ground:
-    serializedVersion: 2
-    m_Bits: 98304
---- !u!114 &2913130908125989312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595858650411248178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7264613c1029ef4899bc433ddd76ebb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionUI: {fileID: 0}
-  miniMap: {fileID: 0}
-  playerController: {fileID: 0}
-  bikeController: {fileID: 4338699481514591137}
-  player: {fileID: 0}
-  playerSeat: {fileID: 68594010360661567}
-  engineSound: {fileID: 7959367118424496157}
-  skidSound: {fileID: 476556837018392945}
 --- !u!82 &7959367118424496157
 AudioSource:
   m_ObjectHideFlags: 0

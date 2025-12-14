@@ -8,23 +8,28 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
-    private CharacterController controller;
+    [SerializeField] private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
     [SerializeField] private MouseLook mouseLook;
-
+    [SerializeField] private bool isUsing = true;
+    [SerializeField] private BikeController bikeController;
+    [SerializeField] private Transform playerSeat;
     void Start()
     {
         transform.position = GameManager.Instance.GetBroOriginalPos().position;
         controller = GetComponentInChildren<CharacterController>();
         animator = GetComponentInChildren<Animator>();
-
+        playerSeat = bikeController.GetSeat();
+        EventManager.Instance.OnBikeSpawn += OnBikeSpawned;
     }
 
     void Update()
     {
         // if not playing game => return 
         if (!GameManager.Instance.IsGamePlaying()) return;
+
+        if(!isUsing) return;
 
         ApplyMovemet();
         AnimatorController();
@@ -89,5 +94,49 @@ public class PlayerController : MonoBehaviour
         // Áp dụng trọng lực
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+    public void SetUsingController(bool value)
+    {
+        isUsing = value;
+    }
+    
+    public void EnteredBike() // đã lên xe
+    {
+        controller.enabled = false;
+        SetMouseLook(false);
+        SetUsingController(false);
+        SetAnimationRiding(true);
+        transform.SetParent(playerSeat);
+        transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+    }
+    public void ExittedBike()
+    {
+        SetMouseLook(true);
+        SetAnimationRiding(false);
+        SetUsingController(true);
+        transform.SetParent(null);
+        transform.position = bikeController.transform.position;
+        transform.rotation = Quaternion.LookRotation(transform.forward);
+        controller.enabled = true;
+    }
+    public void OnBikeSpawned(GameObject bike)
+    {
+        var controller = bike.GetComponentInChildren<BikeController>();
+        if(controller != null)
+        {
+            bikeController = controller;
+            playerSeat = bikeController.GetSeat();
+        }else
+        {
+            Debug.Log("Bike controller is null");
+        }
+    }
+    public void ResetBroState()
+    {
+        EnableCollider();
+        SetMouseLook(true);
+        SetAnimationRiding(false);
+        SetUsingController(true);
+        transform.SetParent(null);
     }
 }

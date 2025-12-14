@@ -27,9 +27,9 @@ public class GameFactory : MonoBehaviour
     public GameObject SpawnBike(Vector3 pos, Quaternion rot)
     {
         var bike = Instantiate(bikePrefab, pos, rot);
-        var ctrl = bike.GetComponent<BikeInteraction>();
+        // var ctrl = bike.GetComponentInChildren<BikeInteraction>();
 
-        ctrl.Setup(interactionUI, miniMap, playerController, playerTransform);
+        // ctrl.Setup(interactionUI, miniMap, playerController, playerTransform);
         Debug.Log("Before spawn 2");
         EventManager.Instance.BikeSpawned(bike);
         return bike;

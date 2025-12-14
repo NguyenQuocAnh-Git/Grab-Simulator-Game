@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Pickup
   - Drop
+  - Bike
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Pedestrian
   - Vehicle
   - ImageBike
-  - 
+  - BroInteract
   - 
   - 
   - 

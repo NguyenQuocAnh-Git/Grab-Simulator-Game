@@ -25,6 +25,9 @@ public class BikeController : MonoBehaviour
 
 
     public LayerMask ground;
+    [SerializeField] private bool isUsingBike = false;
+    [SerializeField] private Transform playerSeat;
+    [SerializeField] Transform BikeParent;
     private void Start()
     {
         SphereRB.transform.parent = null;
@@ -47,22 +50,24 @@ public class BikeController : MonoBehaviour
         // if not playing game => return 
         if (!GameManager.Instance.IsGamePlaying()) return;
         
-        moveInput = Input.GetAxis("Vertical");
-        steerInput = Input.GetAxis("Horizontal");
+        if(isUsingBike)
+        {
+            moveInput = Input.GetAxis("Vertical");
+            steerInput = Input.GetAxis("Horizontal");
+        }
 
-        transform.position = SphereRB.transform.position;
+        BikeParent.position = SphereRB.transform.position;
 
         velocity = BikeBody.transform.InverseTransformDirection(BikeBody.velocity);
         curentVelocityOffset = velocity.z / maxSpeed;
 
-        currentSpeed = velocity.magnitude;
+        currentSpeed = SphereRB.velocity.magnitude;
     }
-
-    private void FixedUpdate()
+    private void FixedUpdate() 
     {
         // if not playing game => return 
         if (!GameManager.Instance.IsGamePlaying()) return;
-        
+        if(!isUsingBike) return;
         Movement();
 
         SkinMarks();
@@ -91,14 +96,14 @@ public class BikeController : MonoBehaviour
 
     private void Acceleration()
     {
-        SphereRB.velocity = Vector3.Lerp(SphereRB.velocity, maxSpeed * moveInput * transform.forward, Time.deltaTime * acceleration);
+        SphereRB.velocity = Vector3.Lerp(SphereRB.velocity, maxSpeed * moveInput * BikeParent.forward, Time.deltaTime * acceleration);
     }
 
     private void Rotation()
     {
         if(SphereRB.velocity.magnitude > 1)
         {
-        transform.Rotate(0, steerInput * steerStrength * Time.fixedDeltaTime, 0, Space.World);
+        BikeParent.Rotate(0, steerInput * steerStrength * Time.fixedDeltaTime, 0, Space.World);
         }
         Handle.transform.localRotation = Quaternion.Slerp(Handle.transform.localRotation, Quaternion.Euler(Handle.transform.localRotation.eulerAngles.x, handleRotVal * steerInput, Handle.transform.localRotation.eulerAngles.z), handleRotSpeed);
     }
@@ -120,9 +125,9 @@ public class BikeController : MonoBehaviour
         {
             zRot = -zTiltAngle * steerInput * curentVelocityOffset;
         }
-        Quaternion targetRot = Quaternion.Slerp(BikeBody.transform.rotation, Quaternion.Euler(xRot, transform.eulerAngles.y, zRot), bikeXTileIncrement);
+        Quaternion targetRot = Quaternion.Slerp(BikeBody.transform.rotation, Quaternion.Euler(xRot, BikeParent.eulerAngles.y, zRot), bikeXTileIncrement);
 
-        Quaternion newRotation = Quaternion.Euler(targetRot.eulerAngles.x, transform.eulerAngles.y, targetRot.eulerAngles.z);
+        Quaternion newRotation = Quaternion.Euler(targetRot.eulerAngles.x, BikeParent.eulerAngles.y, targetRot.eulerAngles.z);
 
         BikeBody.MoveRotation(newRotation);
     }
@@ -171,4 +176,17 @@ public class BikeController : MonoBehaviour
             engineSound.mute = true;
         }
     }
+    public void EnteredBike() // đã lên xe
+    {
+        isUsingBike = true;
+        engineSound.Play();
+        skidSound.Play();
+    }
+    public void ExittedBike()
+    {
+        isUsingBike = false;
+        engineSound.Stop();
+        skidSound.Stop();
+    }
+    public Transform GetSeat() => playerSeat;
 }
