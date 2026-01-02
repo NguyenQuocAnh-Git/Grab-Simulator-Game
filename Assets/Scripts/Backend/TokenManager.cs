@@ -2,38 +2,78 @@ using System;
 using System.Text;
 using UnityEngine;
 
-public sealed class TokenManager
+public class TokenManager : MonoBehaviour
 {
-    private const string TokenKey = "auth_token";
-    private static readonly Lazy<TokenManager> lazyInstance = new Lazy<TokenManager>(() => new TokenManager());
+    private const string TokenKey = "jwt_token";
+    private const string EmailKey = "user_email";
 
-    public static TokenManager Instance => lazyInstance.Value;
+    private static TokenManager _instance;
+    public static TokenManager Instance => _instance ?? CreateSingleton();
 
-    public string Token { get; private set; }
-    public bool HasValidToken => !string.IsNullOrEmpty(Token) && !IsExpired(Token);
+    public string CurrentToken { get; private set; }
+    public string Token => CurrentToken;
+    public string CurrentEmail { get; private set; }
 
-    private TokenManager()
+    public bool IsTokenValid => !string.IsNullOrEmpty(CurrentToken) && !IsExpired(CurrentToken);
+    public bool HasValidToken => IsTokenValid;
+
+    private static TokenManager CreateSingleton()
     {
-        Token = PlayerPrefs.GetString(TokenKey, string.Empty);
+        if (_instance != null)
+        {
+            return _instance;
+        }
+
+        var obj = new GameObject(nameof(TokenManager));
+        _instance = obj.AddComponent<TokenManager>();
+        return _instance;
     }
 
-    public void SaveToken(string token)
+    private void Awake()
     {
-        Token = token;
-        PlayerPrefs.SetString(TokenKey, token);
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+        LoadToken();
+    }
+
+    public void SaveToken(string token, string email = null)
+    {
+        CurrentToken = token;
+
+        if (!string.IsNullOrEmpty(email))
+        {
+            CurrentEmail = email;
+            PlayerPrefs.SetString(EmailKey, email);
+        }
+
+        PlayerPrefs.SetString(TokenKey, token ?? string.Empty);
         PlayerPrefs.Save();
     }
 
     public void ClearToken()
     {
-        Token = string.Empty;
+        CurrentToken = null;
+        CurrentEmail = null;
         PlayerPrefs.DeleteKey(TokenKey);
+        PlayerPrefs.DeleteKey(EmailKey);
         PlayerPrefs.Save();
     }
 
     public bool IsLoggedIn()
     {
-        return HasValidToken;
+        return IsTokenValid;
+    }
+
+    private void LoadToken()
+    {
+        CurrentToken = PlayerPrefs.GetString(TokenKey, null);
+        CurrentEmail = PlayerPrefs.GetString(EmailKey, null);
     }
 
     private bool IsExpired(string token)

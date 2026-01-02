@@ -17,6 +17,13 @@ public class PanelGameStat : MonoBehaviour
     {
         playerCoin.OnTotalCoinChanged += SetTotalCoin;
     }
+    private void OnDestroy()
+    {
+        if (playerCoin != null)
+        {
+            playerCoin.OnTotalCoinChanged -= SetTotalCoin;
+        }
+    }
     private void SetTotalCoin(int coin)
     {
         totalCoin.text = coin.ToString();

@@ -54,9 +54,22 @@ public class LoginUI : MonoBehaviour
         loginButton.onClick.AddListener(OnLoginButtonClicked);
         requestOtpButton.onClick.AddListener(OnRequestOtpButtonClicked);
         CacheAndSetup();
-        PlayPanelIntro();
+        StartGame();
     }
-
+    private bool CheckTokenValid()
+    {
+        return TokenManager.Instance.HasValidToken;
+    }
+    private async void StartGame()
+    {
+        if(CheckTokenValid())
+        {
+            await HandlePostLoginSequence();
+        }else
+        {
+            PlayPanelIntro();
+        }
+    }
     private void CacheAndSetup()
     {
         panelRect = loginPanel.GetComponent<RectTransform>();
@@ -128,22 +141,22 @@ public class LoginUI : MonoBehaviour
 
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(otp))
         {
-            ShowMessage("Vui lòng nhập email và OTP", true);
+            ShowMessage("Please enter email and OTP", true);
             return;
         }
 
         loginButton.interactable = false;
-        ShowMessage("Đang xác thực...", false);
+        ShowMessage("Verify ...", false);
 
         var response = await AuthService.Instance.VerifyOtpAsync(email, otp);
         if (response.success)
         {
-            ShowMessage("Đăng nhập thành công", false);
+            ShowMessage("Success", false);
             await HandlePostLoginSequence();
         }
         else
         {
-            ShowMessage(response.message ?? "OTP không hợp lệ", true);
+            ShowMessage(response.message ?? "OTP invalid", true);
         }
 
         loginButton.interactable = true;
@@ -153,22 +166,22 @@ public class LoginUI : MonoBehaviour
         string email = emailInput.text;
         if (string.IsNullOrWhiteSpace(email))
         {
-            ShowMessage("Vui lòng nhập email", true);
+            ShowMessage("Please enter email", true);
             return;
         }
 
         requestOtpButton.interactable = false;
-        ShowMessage("Đang gửi OTP...", false);
+        ShowMessage("Send OTP...", false);
 
         var response = await AuthService.Instance.RequestOtpAsync(email);
         if (response.success)
         {
-            ShowMessage("Đã gửi OTP. Vui lòng kiểm tra email", false);
+            ShowMessage("sent OTP. Please check your email", false);
             RevealOtpAndLogin();
         }
         else
         {
-            ShowMessage(response.message ?? "Gửi OTP thất bại", true);
+            ShowMessage(response.message ?? "Sent OTP fail", true);
         }
 
         requestOtpButton.interactable = true;
@@ -344,9 +357,11 @@ public class LoginUI : MonoBehaviour
         if (loginCanvas != null)
         {
             loginCanvas.gameObject.SetActive(false);
+            Destroy(loginCanvas.gameObject);
             return;
         }
 
         gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
