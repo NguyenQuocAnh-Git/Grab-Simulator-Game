@@ -206,4 +206,26 @@ public class PlayerCoin : MonoBehaviour
         if (value < int.MinValue) return int.MinValue;
         return (int)value;
     }
+    public bool CanSpendCoin(int amount)
+    {
+        return totalCoin >= amount;
+    }
+
+    public bool SpendCoin(int amount)
+    {
+        if (amount <= 0) return true;
+
+        if (totalCoin < amount)
+            return false;
+
+        totalCoin -= amount;
+        OnTotalCoinChanged?.Invoke(totalCoin);
+        return true;
+    }
+
+    public int GetTotalCoin()
+    {
+        return totalCoin;
+    }
+
 }

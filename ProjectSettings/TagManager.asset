@@ -8,6 +8,7 @@ TagManager:
   - Pickup
   - Drop
   - Bike
+  - GasStation
   layers:
   - Default
   - TransparentFX
